@@ -1,0 +1,19 @@
+{
+  "Name": "TextPage",
+  "Alias": "TextPage",
+  "File": "umb://template-file/TextPage.cshtml",
+  "Master": "umb://template/bc3635b126974520aa4611e47d317dcc",
+  "Udi": "umb://template/e1ffa9034c1d42bab0d2bd038b0db937",
+  "Dependencies": [
+    {
+      "Udi": "umb://template-file/TextPage.cshtml",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/bc3635b126974520aa4611e47d317dcc",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.TemplateArtifact",
+  "__version": "13.1.0"
+}
