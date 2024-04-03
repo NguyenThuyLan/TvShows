@@ -1,3 +1,3 @@
 [project]
-base = "src/UmbracoProject"
-csproj = "UmbracoProject.csproj"
+base = "src/TvShows.Web.UI"
+csproj = "TvShows.Web.UI.csproj"

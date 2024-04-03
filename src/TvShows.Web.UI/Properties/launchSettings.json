@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "UmbracoProject": {
+    "TvShows.Web.UI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
