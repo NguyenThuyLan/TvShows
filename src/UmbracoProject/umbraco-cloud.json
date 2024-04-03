@@ -1,7 +1,17 @@
 {
   "Deploy": {
     "Project": {
-      "Workspaces": []
+      "Name": "tvshows",
+      "Alias": "tvshows",
+      "Id": "171ee6ab-f65a-40bf-8265-267716c2d0b6",
+      "Workspaces": [
+        {
+          "Id": "154e539a-07cf-40f2-ba24-591050bf838b",
+          "Name": "Live",
+          "Type": "live",
+          "Url": "https://tvshows.aueast01.umbraco.io"
+        }
+      ]
     },
     "Settings": {}
   },
