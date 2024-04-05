@@ -1,0 +1,14 @@
+{
+  "Name": "DayMonthYear/Time",
+  "Alias": "",
+  "EditorAlias": "Umbraco.DateTime",
+  "DatabaseType": "Date",
+  "Configuration": {
+    "format": "DD-MM-YYYY HH:mm:ss",
+    "offsetTime": false
+  },
+  "Udi": "umb://data-type/406653625ea34b329dda28bb3c430de9",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DataTypeArtifact",
+  "__version": "13.1.0"
+}

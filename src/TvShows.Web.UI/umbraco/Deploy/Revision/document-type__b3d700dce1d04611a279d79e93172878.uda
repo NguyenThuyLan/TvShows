@@ -1,0 +1,84 @@
+{
+  "Name": "TvShow",
+  "Alias": "tvShow",
+  "DefaultTemplate": "umb://template/7550f6095abb48bca91d4f51bd6853f8",
+  "AllowedTemplates": [
+    "umb://template/7550f6095abb48bca91d4f51bd6853f8"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-tv-old color-black",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowedChildContentTypes": []
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "7dc24b55-1ed0-4f3f-be79-a624472c9e37",
+      "Name": "Content",
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "0de00e3a-091b-4589-a830-8552471ff034",
+          "Alias": "preImage",
+          "DataType": "umb://data-type/ad9f0cf2bda245d59ea1a63cfc873fd3",
+          "Name": "PreImage",
+          "SortOrder": 3
+        },
+        {
+          "Key": "590e1075-fca3-4601-b22d-88036ea0bfe8",
+          "Alias": "tvShowID",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "TvShowID",
+          "SortOrder": 4
+        },
+        {
+          "Key": "6135d12e-fc65-4ff5-aa2f-0f79101ed5e9",
+          "Alias": "summary",
+          "DataType": "umb://data-type/c6bac0dd4ab945b18e30e4b619ee5da3",
+          "Name": "Summary",
+          "SortOrder": 2
+        },
+        {
+          "Key": "6e41440d-9d60-46b7-be69-cab362de1291",
+          "Alias": "premiered",
+          "DataType": "umb://data-type/406653625ea34b329dda28bb3c430de9",
+          "Name": "Premiered",
+          "SortOrder": 1
+        },
+        {
+          "Key": "e0b44c6d-770f-4688-9832-a6906940be48",
+          "Alias": "showTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "ShowTitle"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/b3d700dce1d04611a279d79e93172878",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/406653625ea34b329dda28bb3c430de9",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/ad9f0cf2bda245d59ea1a63cfc873fd3",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/c6bac0dd4ab945b18e30e4b619ee5da3",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/7550f6095abb48bca91d4f51bd6853f8",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}

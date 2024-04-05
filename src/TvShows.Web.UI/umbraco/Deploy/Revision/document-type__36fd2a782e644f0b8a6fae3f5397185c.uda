@@ -1,0 +1,32 @@
+{
+  "Name": "TvShowsLibrary",
+  "Alias": "tvShowsLibrary",
+  "DefaultTemplate": "umb://template/c192b858f7294171981f3628408ccb55",
+  "AllowedTemplates": [
+    "umb://template/c192b858f7294171981f3628408ccb55"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-tv-old color-black",
+  "Thumbnail": "folder.png",
+  "IsContainer": true,
+  "Permissions": {
+    "AllowedChildContentTypes": [
+      "umb://document-type/b3d700dce1d04611a279d79e93172878"
+    ]
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/36fd2a782e644f0b8a6fae3f5397185c",
+  "Dependencies": [
+    {
+      "Udi": "umb://document-type/b3d700dce1d04611a279d79e93172878"
+    },
+    {
+      "Udi": "umb://template/c192b858f7294171981f3628408ccb55",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}
