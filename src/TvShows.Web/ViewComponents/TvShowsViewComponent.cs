@@ -48,7 +48,8 @@ namespace TvShows.Web.ViewComponents
 							Name = child.Name,
 							Summary = child.Summary,
 							Premiered = child.Premiered,
-							Image = child.PreImage
+							Image = child.PreImage,
+							Url = child.Url()
 						};
 						TvShows.Add(tvshow);
 					}

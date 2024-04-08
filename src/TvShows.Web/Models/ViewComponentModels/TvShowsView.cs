@@ -14,6 +14,7 @@ namespace TvShows.Web.Models.ViewComponentModels
 		public string? Name { get; set; }
 		public string? Summary { get; set; }
 		public DateTime? Premiered { get; set; }
-		public MediaWithCrops? Image { get; set; }
+        public string Url { get; set; }
+        public MediaWithCrops? Image { get; set; }
 	}
 }
