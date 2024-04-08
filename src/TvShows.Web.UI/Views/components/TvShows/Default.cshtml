@@ -1,0 +1,38 @@
+﻿ @using TvShows.Web.Models.ViewComponentModels;
+ @model TvShows.Web.Models.PaginationModel;
+@{
+	int displayPages = 5;
+}
+<div>
+	<p style="float: left">Total: @Model.TotalCount</p>
+	<ul class="pagination">
+		@if (Model.TotalPages > 1)
+		{
+			<li class="icon-prev"><a href="?page=@(Model.CurrentPage-1)"><i class="ion-ios-arrow-left"></i></a></li>
+			@for (int i = 1; i <= Model.TotalPages; i++)
+			{
+				if (i > Model.CurrentPage - displayPages && i < Model.CurrentPage + displayPages)
+				{
+					<li class="@(i==@Model.CurrentPage ? "active" : string.Empty)"><a href="?page=@i"> @i </a></li>
+				}
+			}
+
+			<li class="icon-next"><a href="?page=@(Model.CurrentPage+1)"><i class="ion-ios-arrow-right"></i></a></li>
+		}
+	</ul>
+</div>
+
+
+@foreach (var tvShow in Model.Items ?? new List<TvShowsView>())
+{
+	<div class="blog-item-style-1 blog-item-style-3">
+		<img src="@tvShow?.Image?.LocalCrops?.Src" alt="">
+		<div class="blog-it-infor">
+			<h3><a href="#">@tvShow.Name</a></h3>
+			<span class="time">@tvShow.Premiered</span>
+			<p>@Html.Raw(@tvShow.Summary)</p>
+		</div>
+	</div>
+}
+
+

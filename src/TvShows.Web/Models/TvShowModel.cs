@@ -6,6 +6,8 @@ namespace TvShows.Web.Models
 	{
 		[JsonPropertyName("id")] public int Id { get; set; }
 		[JsonPropertyName("name")] public string? Name { get; set; }
+		[JsonPropertyName("summary")] public string? Summary { get; set; }
+		[JsonPropertyName("premiered")] public DateTime? Premiered { get; set; }
 		[JsonPropertyName("image")] public Image? Image { get; set; }
 	}
 

@@ -1,38 +1,22 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.TvShowsLibrary>
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using TvShows.Web.UI.Controllers;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TvShowsLibrary>
+@using ContentModels = TvShows.Web.Models.ViewComponentModels;
 @{
 	Layout = "_Layout.cshtml";
-	var tvShows = Model.Children<TvShow>();
+	var pageSize = 10;
+	var query = Context?.Request?.Query["page"].ToString();
+	var pageIndex = String.IsNullOrEmpty(query) ? 1 : Convert.ToInt32(query);
 }
 <div class="page-single">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9 col-sm-12 col-xs-12">
-				@foreach(var tvShow in tvShows)
-				{
-					<div class="blog-item-style-1 blog-item-style-3">
-						<img src="@tvShow.PreImage.LocalCrops.Src" alt="">
-						<div class="blog-it-infor">
-							<h3><a href="blogdetail.html">@tvShow.ShowTitle</a></h3>
-							<span class="time">@tvShow.Premiered</span>
-							<p>@tvShow.Summary</p>
-						</div>
-					</div>
-				}
 				
-				<ul class="pagination">
-					<li class="icon-prev"><a href="#"><i class="ion-ios-arrow-left"></i></a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">...</a></li>
-					<li><a href="#">21</a></li>
-					<li><a href="#">22</a></li>
-					<li class="icon-next"><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
-				</ul>
+				@await Component.InvokeAsync("TvShows", new { pageIndex = pageIndex, pageSize = pageSize });
+				
 			</div>
+			
 			<div class="col-md-3 col-sm-12 col-xs-12">
 				<div class="sidebar">
 					<div class="sb-search sb-it">

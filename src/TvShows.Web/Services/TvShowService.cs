@@ -9,6 +9,7 @@ using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using TvShows.Web.Models;
+using TvShows.Web.Services.Interfaces;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.Models;
@@ -21,7 +22,7 @@ using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace TvShows.Web.Utility
 {
-	public class TvShowService
+	public class TvShowService : ITvShowService
 	{
 		private readonly IUmbracoContextFactory _umbracoContextFactory;
 		private readonly IContentService _contentService;
@@ -112,7 +113,7 @@ namespace TvShows.Web.Utility
 
 			using (var umbracoContextReference = _umbracoContextFactory.EnsureUmbracoContext())
 			{
-				var TvshowLibrary = umbracoContextReference.UmbracoContext.Content.GetById(_contentService.GetRootContent().First().Id) as TvShowsLibrary;
+				var TvshowLibrary = umbracoContextReference.UmbracoContext.Content.GetById(_contentService.GetByLevel(2).ToList().Where(s=>s.Name == "Home").First().Id) as TvShowsLibrary;
 				TvShow existingTvShowInUmbraco = null;
 				var existingTvShowsInUmbraco = TvshowLibrary.Children<TvShow>(_variationContextAccessor).Where(t => t.TvShowID == show.Id.ToString());
 
@@ -137,17 +138,20 @@ namespace TvShows.Web.Utility
 					var media = ImportMediaFromTVMazeToUmbraco(show);
 					var newTvShow = _contentService.Create(show.Name, TvshowLibrary.Id, TvShow.ModelTypeAlias);
 					newTvShow.SetValue(nameof(TvShow.TvShowID), show.Id);
+					newTvShow.SetValue(nameof(TvShow.ShowTitle), show.Name);
+					newTvShow.SetValue(nameof(TvShow.Premiered), show.Premiered);
 
 					if (media != null)
 					{
 						newTvShow.SetValue(nameof(TvShow.PreImage), media.GetUdi());
 					}
 
-					foreach (var description in Descriptions)
-					{
-						newTvShow.SetCultureName(show.Name, description.Key);
-						newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Name} {description.Value}", description.Key);
-					}
+					//foreach (var description in Descriptions)
+					//{
+					//	newTvShow.SetCultureName(show.Name, description.Key);
+					//	newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Name} {description.Value}", description.Key);
+					//}
+					newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Summary}", null);
 
 					_contentService.SaveAndPublish(newTvShow);
 					return true;
@@ -211,6 +215,12 @@ namespace TvShows.Web.Utility
 		}
 		private bool Updated(TvShowModel show, TvShow existingTvShowInUmbraco)
 		{
+			var existTvSHow = _contentService.GetById(existingTvShowInUmbraco.Id);
+			existTvSHow.SetValue(nameof(TvShow.ShowTitle), show.Name);
+			existTvSHow.SetValue(nameof(TvShow.Premiered), show.Premiered);
+			existTvSHow.SetValue(nameof(TvShow.Summary), show.Summary);
+
+			_contentService.SaveAndPublish(existTvSHow);
 			// todo
 			return false;
 		}
