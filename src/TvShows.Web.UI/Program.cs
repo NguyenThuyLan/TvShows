@@ -16,7 +16,6 @@ if (builder.Environment.IsProduction())
 {
     RecurringJob.AddOrUpdate<TvShowService>("MoveOneTvShowFromTvMazeToUmbraco", x => x.MoveTvShowsFromTvMazeToUmbraco(), Cron.Monthly);
 }
-System.Console.WriteLine("Hello");
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
