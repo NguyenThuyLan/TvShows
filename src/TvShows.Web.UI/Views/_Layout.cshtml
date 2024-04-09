@@ -38,7 +38,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav flex-child-menu menu-left">
-						@foreach (var child in Model.Root().Children()){
+						@foreach (var child in Model.Root().Children().Where(x=>x.IsVisible())){
 							<li class="dropdown first">
 								<a class="btn btn-default dropdown-toggle lv1" href="@child.Url()">
 									@child.Name
@@ -55,13 +55,7 @@
 			</nav>
 
 			<!-- top search form -->
-			<div class="top-search">
-				<select>
-					<option value="united">TV show</option>
-					<option value="saab">Others</option>
-				</select>
-				<input type="text" placeholder="@root.Value("placeholderSearch")">
-			</div>
+			@await Html.PartialAsync("SearchMaster")
 		</div>
 	</header>
 	<!-- END | Header -->

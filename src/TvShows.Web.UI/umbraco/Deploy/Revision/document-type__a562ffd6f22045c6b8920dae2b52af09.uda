@@ -1,0 +1,52 @@
+{
+  "Name": "Search Page",
+  "Alias": "searchPage",
+  "DefaultTemplate": "umb://template/8af6f1106c5a4335a895cb30ee65cfc3",
+  "AllowedTemplates": [
+    "umb://template/8af6f1106c5a4335a895cb30ee65cfc3"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-search color-black",
+  "Thumbnail": "folder.png",
+  "IsContainer": true,
+  "Permissions": {
+    "AllowedChildContentTypes": [
+      "umb://document-type/b3d700dce1d04611a279d79e93172878"
+    ]
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "ffd31523-2846-49cf-b667-7f92c63a3fb4",
+      "Name": "Settings",
+      "Type": 1,
+      "Alias": "settings",
+      "PropertyTypes": [
+        {
+          "Key": "8dffc7cf-c236-4367-af81-1cb5ad688d9b",
+          "Alias": "umbracoNaviHide",
+          "DataType": "umb://data-type/92897bc6a5f34ffeae27f2e7e33dda49",
+          "Description": "Hide from navigation",
+          "Name": "UmbracoNaviHide"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/a562ffd6f22045c6b8920dae2b52af09",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/92897bc6a5f34ffeae27f2e7e33dda49",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://document-type/b3d700dce1d04611a279d79e93172878"
+    },
+    {
+      "Udi": "umb://template/8af6f1106c5a4335a895cb30ee65cfc3",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}

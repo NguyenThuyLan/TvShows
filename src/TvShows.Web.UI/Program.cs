@@ -10,11 +10,10 @@ builder.CreateUmbracoBuilder()
     .AddDeliveryApi()
     .AddComposers()
     .Build();
-//if (builder.Environment.IsProduction())
-//{
-//    RecurringJob.AddOrUpdate<TvShowService>("MoveOneTvShowFromTvMazeToUmbraco", x => x.MoveTvShowsFromTvMazeToUmbraco(), Cron.Monthly);
-
-//}
+if (builder.Environment.IsProduction())
+{
+    RecurringJob.AddOrUpdate<TvShowService>("MoveOneTvShowFromTvMazeToUmbraco", x => x.MoveTvShowsFromTvMazeToUmbraco(), Cron.Monthly);
+}
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();

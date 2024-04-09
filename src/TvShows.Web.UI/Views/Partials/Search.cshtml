@@ -1,0 +1,18 @@
+﻿@using TvShows.Web.Controllers
+@using Umbraco.Cms.Core.Services
+@inject IContentTypeService ContentTypeService
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+	IPublishedContent searchPage = Model.Root().FirstChild<SearchPage>();
+}
+
+@if (searchPage != null)
+{
+	<form action="@searchPage.Url()">
+		<div class="sb-search sb-it">
+			<h4 class="sb-title">Search</h4>
+			<input type="text" placeholder="Enter keywords" name="query">
+		</div>
+	</form>
+}

@@ -1,31 +1,36 @@
-﻿@using TvShows.Web.UI.Controllers;
+﻿@using TvShows.Web.Models
 @using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TvShowsLibrary>
-@using ContentModels = TvShows.Web.Models.ViewComponentModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<SearchModel>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "_Layout.cshtml";
-	var pageSize = 10;
-	var query = Context?.Request?.Query["page"].ToString();
-	var stringQuery = Context?.Request?.Query["query"].ToString();
-	var pageIndex = String.IsNullOrEmpty(query) ? 1 : Convert.ToInt32(query);
 }
 <div class="page-single">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9 col-sm-12 col-xs-12">
-				
-				@await Component.InvokeAsync("TvShows", new { pageIndex = pageIndex, pageSize = pageSize });
-				
+				<p>Your search for <strong>@Model.Query</strong> returned a number of <strong> @Model.TotalResults</strong> result(s) on item types: </p>
+
+				@if (Model.SearchResults != null && Model.SearchResults.Any())
+				{
+					@foreach (var item in Model.SearchResults)
+					{
+						<div class="blog-item-style-1 blog-item-style-3">
+							<img src="@item.PublishedItem?.PreImage.LocalCrops.Src" alt="">
+							<div class="blog-it-infor">
+								<h3><a href="@item.PublishedItem.Url()">@item.PublishedItem.Name</a></h3>
+								<span class="time">@item.PublishedItem.Premiered</span>
+								<p>@Html.Raw(item.PublishedItem.Summary)</p>
+							</div>
+						</div>
+					}
+				}
 			</div>
-			
+
 			<div class="col-md-3 col-sm-12 col-xs-12">
 				<div class="sidebar">
-					@* <div class="sb-search sb-it">
-						<h4 class="sb-title">Search</h4>
-						<input type="text" placeholder="Enter keywords" name="Query">
-					</div> *@
 					@await Html.PartialAsync("Search")
-					
+
 					<div class="sb-cate sb-it">
 						<h4 class="sb-title">Categories</h4>
 						<ul>
