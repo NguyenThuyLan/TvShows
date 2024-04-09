@@ -1,5 +1,6 @@
 using Hangfire;
 using TvShows.Web.Utility;
+using Umbraco.Cms.Infrastructure.Persistence.DatabaseModelDefinitions;
 using static Umbraco.Cms.Core.PropertyEditors.ImageCropperConfiguration;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ if (builder.Environment.IsProduction())
 {
     RecurringJob.AddOrUpdate<TvShowService>("MoveOneTvShowFromTvMazeToUmbraco", x => x.MoveTvShowsFromTvMazeToUmbraco(), Cron.Monthly);
 }
+System.Console.WriteLine("Hello");
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
