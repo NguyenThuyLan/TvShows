@@ -1,5 +1,7 @@
+
 using Hangfire;
 using TvShows.Web.Utility;
+using Umbraco.Cms.Infrastructure.Persistence.DatabaseModelDefinitions;
 using static Umbraco.Cms.Core.PropertyEditors.ImageCropperConfiguration;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
