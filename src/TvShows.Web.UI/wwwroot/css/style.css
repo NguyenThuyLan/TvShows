@@ -8293,3 +8293,27 @@ footer.full-width-ft .ft-copyright {
     color: #7316b1;
     filter: drop-shadow(0 0 2px #fff5ee) drop-shadow(0 0 4px #ffdab9) drop-shadow(0 0 16px #ffd700);
 }
+
+.lang-dropdown {
+    cursor: pointer;
+    position: relative;
+    display: inline;
+}
+.lang-dropdown span {
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.lang-dropdown-content {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: fixed;
+    padding-top: 5px;
+}
+.lang-dropdown-content a {
+    display: block;
+    padding: 9px 0px;
+}

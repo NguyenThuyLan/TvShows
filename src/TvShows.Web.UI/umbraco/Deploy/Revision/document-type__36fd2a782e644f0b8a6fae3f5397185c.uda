@@ -10,6 +10,7 @@
   "Thumbnail": "folder.png",
   "IsContainer": true,
   "Permissions": {
+    "AllowVaryingByCulture": true,
     "AllowedChildContentTypes": [
       "umb://document-type/b3d700dce1d04611a279d79e93172878"
     ]

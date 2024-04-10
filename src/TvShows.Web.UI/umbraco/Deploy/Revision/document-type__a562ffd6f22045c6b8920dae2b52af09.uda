@@ -10,12 +10,37 @@
   "Thumbnail": "folder.png",
   "IsContainer": true,
   "Permissions": {
+    "AllowVaryingByCulture": true,
     "AllowedChildContentTypes": [
       "umb://document-type/b3d700dce1d04611a279d79e93172878"
     ]
   },
   "CompositionContentTypes": [],
   "PropertyGroups": [
+    {
+      "Key": "d624e68e-3bef-4497-b9bc-fc6df08ddfb9",
+      "Name": "Content",
+      "SortOrder": 1,
+      "Type": 1,
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "194d892c-c861-43fd-b931-cee84e071bfc",
+          "Alias": "searchTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "SearchTitle",
+          "VariesByCulture": true
+        },
+        {
+          "Key": "dde71c88-a586-442f-a323-6fd4dbc3b5e8",
+          "Alias": "searchPlacehoder",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "SearchPlacehoder",
+          "SortOrder": 1,
+          "VariesByCulture": true
+        }
+      ]
+    },
     {
       "Key": "ffd31523-2846-49cf-b667-7f92c63a3fb4",
       "Name": "Settings",
@@ -35,6 +60,10 @@
   "PropertyTypes": [],
   "Udi": "umb://document-type/a562ffd6f22045c6b8920dae2b52af09",
   "Dependencies": [
+    {
+      "Udi": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+      "Ordering": true
+    },
     {
       "Udi": "umb://data-type/92897bc6a5f34ffeae27f2e7e33dda49",
       "Ordering": true

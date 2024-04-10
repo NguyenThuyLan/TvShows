@@ -1,0 +1,11 @@
+{
+  "Name": "Vietnamese",
+  "Alias": "vi",
+  "IsoCode": "vi",
+  "IsMandatory": true,
+  "FallbackLanguageIsoCode": "en-US",
+  "Udi": "umb://language/vi",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.LanguageArtifact",
+  "__version": "13.1.0"
+}

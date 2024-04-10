@@ -1,0 +1,11 @@
+{
+  "Name": "Danish",
+  "Alias": "da",
+  "IsoCode": "da",
+  "IsMandatory": true,
+  "FallbackLanguageIsoCode": "en-US",
+  "Udi": "umb://language/da",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.LanguageArtifact",
+  "__version": "13.1.0"
+}

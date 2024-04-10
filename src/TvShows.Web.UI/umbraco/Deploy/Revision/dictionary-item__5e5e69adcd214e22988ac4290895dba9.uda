@@ -1,0 +1,48 @@
+{
+  "Name": "umb://dictionary-item/5e5e69adcd214e22988ac4290895dba9",
+  "Alias": "",
+  "ItemKey": "da",
+  "ParentId": "f55d675a-f21b-4986-92de-e6a513238329",
+  "Translations": [
+    {
+      "Key": "5e5e69ad-cd21-4e22-988a-c4290895dba9",
+      "Value": "Dansk",
+      "LanguageIsoCode": "da"
+    },
+    {
+      "Key": "5e5e69ad-cd21-4e22-988a-c4290895dba9",
+      "Value": "Danish",
+      "LanguageIsoCode": "en-US"
+    },
+    {
+      "Key": "5e5e69ad-cd21-4e22-988a-c4290895dba9",
+      "Value": "Đan Mạch",
+      "LanguageIsoCode": "vi"
+    }
+  ],
+  "Udi": "umb://dictionary-item/5e5e69adcd214e22988ac4290895dba9",
+  "Dependencies": [
+    {
+      "Udi": "umb://dictionary-item/f55d675af21b498692dee6a513238329",
+      "Ordering": true,
+      "Mode": "Exist"
+    },
+    {
+      "Udi": "umb://language/da",
+      "Ordering": true,
+      "Mode": "Exist"
+    },
+    {
+      "Udi": "umb://language/en-US",
+      "Ordering": true,
+      "Mode": "Exist"
+    },
+    {
+      "Udi": "umb://language/vi",
+      "Ordering": true,
+      "Mode": "Exist"
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DictionaryItemArtifact",
+  "__version": "13.1.0"
+}

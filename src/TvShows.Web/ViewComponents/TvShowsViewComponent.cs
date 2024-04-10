@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Polly.Caching;
 using TvShows.Web.Models;
 using TvShows.Web.Models.ViewComponentModels;
 using Umbraco.Cms.Core.Services;
@@ -26,7 +27,7 @@ namespace TvShows.Web.ViewComponents
 
         }
 
-		public IViewComponentResult Invoke(int pageIndex = 1, int pageSize = 10, string query = "")
+		public IViewComponentResult Invoke(int pageIndex = 1, int pageSize = 10)
 		{
 			PaginationModel paginationModel = new PaginationModel();
             try
@@ -34,30 +35,41 @@ namespace TvShows.Web.ViewComponents
 				var TvShows = new List<TvShowsView>();
 				var parentId = _contentService.GetByLevel(2).ToList().Where(s => s.Name == "Home").First().Id;
 				var contentParent = _umbracoContextFactory.EnsureUmbracoContext().UmbracoContext.Content.GetById(parentId) as TvShowsLibrary;
-				var total = contentParent.Children<TvShow>().Count();
-				var totalPages = (int)Math.Ceiling((double)total / (double)pageSize);
-				var children = contentParent.Children<TvShow>().ToList().GetRange((pageIndex - 1) * pageSize, pageSize);
-				_logger.LogInformation($"TvShowsViewComponent:Getdata: childrenCount = {contentParent.Children<TvShow>().Count()}");
-				if (children.Count > 0)
+				var tvShowChildren = contentParent.Children<TvShow>();
+				if(tvShowChildren != null && tvShowChildren.Any())
 				{
-					foreach (var child in children)
+					var total = contentParent.Children<TvShow>().Count();
+					var totalPages = (int)Math.Ceiling((double)total / (double)pageSize);
+					var children = contentParent.Children<TvShow>().ToList().GetRange((pageIndex - 1) * pageSize, pageSize);
+					_logger.LogInformation($"TvShowsViewComponent:Getdata: childrenCount = {contentParent.Children<TvShow>().Count()}");
+					if (children.Count > 0)
 					{
-						var tvshow = new TvShowsView()
+						foreach (var child in children)
 						{
-							Id = child.Id,
-							Name = child.Name,
-							Summary = child.Summary,
-							Premiered = child.Premiered,
-							Image = child.PreImage,
-							Url = child.Url()
-						};
-						TvShows.Add(tvshow);
+							var tvshow = new TvShowsView()
+							{
+								Id = child.Id,
+								Name = child.Name,
+								Summary = child.Summary,
+								Premiered = child.Premiered,
+								Image = child.PreImage,
+								Url = child.Url()
+							};
+							TvShows.Add(tvshow);
+						}
 					}
+					paginationModel.TotalPages = totalPages;
+					paginationModel.TotalCount = total;
+					paginationModel.Items = TvShows;
+					paginationModel.CurrentPage = pageIndex;
 				}
-				paginationModel.TotalPages = totalPages;
-				paginationModel.TotalCount = total;
-				paginationModel.Items = TvShows;
-				paginationModel.CurrentPage = pageIndex;
+				else
+				{
+					paginationModel.TotalPages = 0;
+					paginationModel.TotalCount = 0;
+					paginationModel.Items = null;
+					paginationModel.CurrentPage = 1;
+				}
 			}
             catch (Exception ex)
             {

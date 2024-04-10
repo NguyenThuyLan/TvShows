@@ -9,6 +9,7 @@
   "Icon": "icon-home color-black",
   "Thumbnail": "folder.png",
   "Permissions": {
+    "AllowVaryingByCulture": true,
     "AllowedAtRoot": true,
     "AllowedChildContentTypes": [
       "umb://document-type/a84605dcf20f42e5b0db7d09263da230",
@@ -28,7 +29,8 @@
           "Alias": "placeholderSearch",
           "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
           "Name": "PlaceholderSearch",
-          "SortOrder": 1
+          "SortOrder": 1,
+          "VariesByCulture": true
         },
         {
           "Key": "862edd5a-8fb5-4b32-b697-2a637784b1ac",

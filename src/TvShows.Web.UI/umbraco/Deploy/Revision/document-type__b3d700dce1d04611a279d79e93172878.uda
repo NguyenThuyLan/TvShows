@@ -9,6 +9,7 @@
   "Icon": "icon-tv-old color-black",
   "Thumbnail": "folder.png",
   "Permissions": {
+    "AllowVaryingByCulture": true,
     "AllowedChildContentTypes": []
   },
   "CompositionContentTypes": [],
