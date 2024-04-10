@@ -11,6 +11,7 @@ namespace TvShows.Web.Services.Interfaces
 	public interface ITvShowService
 	{
 		string MoveTvShowsFromTvMazeToUmbraco();
+		void DeleteTvShows();
 
 		IMedia ImportMediaFromTVMazeToUmbraco(TvShowModel tvShow);
 	}

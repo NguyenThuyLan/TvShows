@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using TvShows.Web.Models;
 using TvShows.Web.Services.Interfaces;
 using Umbraco.Cms.Core;
+using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
@@ -19,11 +20,13 @@ using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Strings;
 using Umbraco.Cms.Core.Web;
 using Umbraco.Cms.Web.Common.PublishedModels;
+using Umbraco.Extensions;
 
 namespace TvShows.Web.Utility
 {
 	public class TvShowService : ITvShowService
 	{
+		private GlobalSettings _globalSettings;
 		private readonly IUmbracoContextFactory _umbracoContextFactory;
 		private readonly IContentService _contentService;
 		private readonly IMediaService _mediaService;
@@ -35,31 +38,9 @@ namespace TvShows.Web.Utility
 		private readonly IVariationContextAccessor _variationContextAccessor;
 
 		Dictionary<string, string> Descriptions = new() {
-		{ "en", "was a great TV Show" },
+		{ "en-US", "was a great TV Show" },
 		{ "da", "som et godt tv-program" },
-		{ "es", "como un gran programa de televisión" },
-		{ "fr", "était une excellente émission de télévision" },
-		{ "de", "war eine großartige Fernsehsendung" },
-		{ "it", "era un ottimo programma televisivo" },
-		{ "pt", "foi um ótimo programa de TV" },
-		{ "ru", "было отличным телешоу" },
-		{ "ja", "素晴らしいテレビ番組でした" },
-		{ "ko", "좋은 TV 프로그램이었습니다" },
-		{ "zh", "是一档很棒的电视节目" },
-		{ "ar", "كانت برنامج تلفزيوني رائع" },
-		{ "hi", "एक शानदार टीवी शो था" },
-		{ "tr", "harika bir TV programıydı" },
-		{ "nl", "was een geweldige tv-show" },
-		{ "sv", "var en fantastisk TV-show" },
-		{ "fi", "oli mahtava TV-ohjelma" },
-		{ "no", "var en flott TV-show" },
-		{ "pl", "był świetnym programem telewizyjnym" },
-		{ "hu", "nagyszerű TV-műsor volt" },
-		{ "cs", "byl skvělý televizní pořad" },
-		{ "ro", "a fost un program TV minunat" },
-		{ "el", "ήταν ένα υπέροχο τηλεοπτικό σόου" },
-		{ "id", "adalah acara TV yang hebat" },
-		{ "th", "เป็นรายการทีวีที่ยอดเยี่ยม" }
+		{ "vi", "Một TV Show tuyệt vời" }
 	 };
 
 		public TvShowService(IUmbracoContextFactory umbracoContextFactory,
@@ -91,9 +72,9 @@ namespace TvShows.Web.Utility
 
 			HttpClient client = new();
 
-			while (true)
+			while (page < 1)
 			{
-				var response = client.GetAsync(ShowsAPI(page++)).Result;
+				var response = client.GetAsync(ShowsAPI(page)).Result;
 				var json = response.Content.ReadAsStringAsync().Result;
 				var shows = response.Content.ReadAsAsync<TvShowModel[]>(new[] { new JsonMediaTypeFormatter() }).Result;
 				try { response.EnsureSuccessStatusCode(); } catch { break; }
@@ -104,6 +85,7 @@ namespace TvShows.Web.Utility
 						InsertedOrUpdated(show);
 					}
 				}
+				page++;
 			}
 			return $"Sync complete until page {page}";
 		}
@@ -113,9 +95,11 @@ namespace TvShows.Web.Utility
 
 			using (var umbracoContextReference = _umbracoContextFactory.EnsureUmbracoContext())
 			{
-				var TvshowLibrary = umbracoContextReference.UmbracoContext.Content.GetById(_contentService.GetByLevel(2).ToList().Where(s=>s.Name == "Home").First().Id) as TvShowsLibrary;
+				var TvshowLibrary = umbracoContextReference.UmbracoContext.Content.GetById(_contentService.GetByLevel(2)
+					.ToList().Where(s=>s.ContentType.Alias == TvShowsLibrary.ModelTypeAlias).First().Id) as TvShowsLibrary;
 				TvShow existingTvShowInUmbraco = null;
-				var existingTvShowsInUmbraco = TvshowLibrary.Children<TvShow>(_variationContextAccessor).Where(t => t.TvShowID == show.Id.ToString());
+				var existingTvShowsInUmbraco = TvshowLibrary.Children<TvShow>(_variationContextAccessor)
+					.Where(t => t.TvShowID == show.Id.ToString());
 
 				if (existingTvShowsInUmbraco?.Any() ?? false)
 				{
@@ -146,13 +130,13 @@ namespace TvShows.Web.Utility
 						newTvShow.SetValue(nameof(TvShow.PreImage), media.GetUdi());
 					}
 
-					//foreach (var description in Descriptions)
-					//{
-					//	newTvShow.SetCultureName(show.Name, description.Key);
-					//	newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Name} {description.Value}", description.Key);
-					//}
+					foreach (var description in Descriptions)
+					{
+						newTvShow.SetCultureName(show.Name, description.Key);
+						//newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Name} {description.Value}", description.Key);
+					}
 					newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Summary}", null);
-
+					
 					_contentService.SaveAndPublish(newTvShow);
 					return true;
 				}
@@ -196,7 +180,7 @@ namespace TvShows.Web.Utility
 
 		private IMedia GetMediaFolderFromUmbraco(string tvShowName)
 		{
-			var parentFolder = _mediaService.GetRootMedia().First();
+			var parentFolder = _mediaService.GetRootMedia().FirstOrDefault();
 			if (parentFolder == null)
 			{
 				throw new FolderNotFoundException($"No Folder exists in the Media Library, please create one.");
@@ -223,6 +207,42 @@ namespace TvShows.Web.Utility
 			_contentService.SaveAndPublish(existTvSHow);
 			// todo
 			return false;
+		}
+
+		public void DeleteTvShows()
+		{
+			try
+			{
+				using (var umbracoContextReference = _umbracoContextFactory.EnsureUmbracoContext())
+				{
+					var contentLevel2 = _contentService.GetByLevel(3).ToList();
+					if(contentLevel2?.Any() ?? false)
+					{
+						var tvShowsLibraryId = contentLevel2.Where(s => s.ContentType.Alias == TvShow.ModelTypeAlias);
+						if(tvShowsLibraryId?.Any() ?? false)
+						{
+							foreach(var item in tvShowsLibraryId)
+							{
+								_contentService.Delete(_contentService.GetById(item.Id));
+							}
+						}
+
+						var mediaFile = _mediaService.GetByLevel(2);
+						if (mediaFile?.Any() ?? false)
+						{
+							foreach (var item in mediaFile)
+							{
+								_mediaService.Delete(item);
+							}
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, $"DeleteTvShows: {ex.Message}");
+			}
+			
 		}
 	}
 }

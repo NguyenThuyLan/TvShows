@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TvShows.Web.Models;
 using TvShows.Web.Services.Interfaces;
-using Umbraco.Cms.Core.Services;
-using Umbraco.Cms.Core.Web;
 using Umbraco.Cms.Web.Common.Controllers;
-using Umbraco.Cms.Web.Common.PublishedModels;
-using Umbraco.Cms.Web.Common.UmbracoContext;
 
-namespace TvShows.Web.UI.Controllers
+namespace TvShows.Web.Controllers
 {
 	public class TvShowsLibraryApiController : UmbracoApiController
 	{
@@ -22,6 +17,12 @@ namespace TvShows.Web.UI.Controllers
 		public void LoadDataFromTvMaze()
 		{
 			_tvShowService.MoveTvShowsFromTvMazeToUmbraco();
+		}
+
+		[HttpDelete]
+		public void DeleteTvShows()
+		{
+			_tvShowService.DeleteTvShows();
 		}
 	}
 }
