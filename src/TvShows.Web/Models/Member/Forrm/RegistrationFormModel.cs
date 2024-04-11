@@ -9,7 +9,7 @@ namespace TvShows.Web.Models.Member.Forrm
 		public string Email { get; set; }
 
 		[Required]
-		public string Name { get; set; }
+		public string StoreUserName { get; set; }
 
 		[Required]
 		[MinLength(10, ErrorMessage = "You password has to be at least 10 characters.")]

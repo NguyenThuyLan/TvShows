@@ -86,7 +86,7 @@ namespace TvShows.Web.Controllers
                     // should never happen
                     throw new InvalidOperationException($"Could not find a member with key: {member.Key}.");
                 }
-                member.SetValue("name", model.Name);
+                member.SetValue("storeUserName", model.StoreUserName);
 
                 _memberService.Save(member);
 

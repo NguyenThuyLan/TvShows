@@ -1,5 +1,5 @@
 {
-  "Name": "Store Member",
+  "Name": "StoreMember",
   "Alias": "storeMember",
   "Icon": "icon-user",
   "Thumbnail": "folder.png",
@@ -7,10 +7,29 @@
     "AllowedChildContentTypes": []
   },
   "CompositionContentTypes": [],
-  "PropertyGroups": [],
+  "PropertyGroups": [
+    {
+      "Key": "b6b9f459-6e6c-455a-840f-1b74525914a5",
+      "Name": "Info",
+      "Alias": "info",
+      "PropertyTypes": [
+        {
+          "Key": "8d386a92-1d7b-4a57-8f26-fdd173eb47ee",
+          "Alias": "storeUserName",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "StoreUserName"
+        }
+      ]
+    }
+  ],
   "PropertyTypes": [],
   "Udi": "umb://member-type/6f1a037b3030439eb17798dcf8ba79e2",
-  "Dependencies": [],
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+      "Ordering": true
+    }
+  ],
   "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.MemberTypeArtifact",
   "__version": "13.1.0"
 }

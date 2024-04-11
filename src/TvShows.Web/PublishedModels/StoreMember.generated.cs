@@ -18,7 +18,7 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Store Member</summary>
+	/// <summary>StoreMember</summary>
 	[PublishedModel("storeMember")]
 	public partial class StoreMember : PublishedContentModel
 	{
@@ -48,5 +48,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		}
 
 		// properties
+
+		///<summary>
+		/// StoreUserName
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("storeUserName")]
+		public virtual string StoreUserName => this.Value<string>(_publishedValueFallback, "storeUserName");
 	}
 }
