@@ -47,7 +47,7 @@
 			</li>
 			@if (isLoggedIn)
 			{
-				<li class="loginLink"><a href="@login.Url()">Logout</a></li>
+				<li class="loginLink"><a href="@(Url.SurfaceAction("Logout", "Login"))">Logout</a></li>
 			}
 			else
 			{

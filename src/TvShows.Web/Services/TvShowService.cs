@@ -1,4 +1,5 @@
 ﻿using MailKit;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -26,7 +27,7 @@ namespace TvShows.Web.Utility
 {
 	public class TvShowService : ITvShowService
 	{
-		private GlobalSettings _globalSettings;
+		private readonly IConfiguration _configuration;
 		private readonly IUmbracoContextFactory _umbracoContextFactory;
 		private readonly IContentService _contentService;
 		private readonly IMediaService _mediaService;
@@ -51,7 +52,8 @@ namespace TvShows.Web.Utility
 		IShortStringHelper shortStringHelper,
 		IContentTypeBaseServiceProvider contentTypeBaseServiceProvider,
 		ILogger<TvShowService> logger,
-		IVariationContextAccessor variationContextAccessor) 
+		IVariationContextAccessor variationContextAccessor,
+		IConfiguration configuration) 
 		{
 			_umbracoContextFactory = umbracoContextFactory;
 			_contentService = contentService;
@@ -62,6 +64,7 @@ namespace TvShows.Web.Utility
 			_contentTypeBaseServiceProvider = contentTypeBaseServiceProvider;
 			_logger = logger;
 			_variationContextAccessor = variationContextAccessor;
+			_configuration = configuration;
 		}
 
 		public string MoveTvShowsFromTvMazeToUmbraco()
@@ -211,6 +214,7 @@ namespace TvShows.Web.Utility
 
 		public void DeleteTvShows()
 		{
+			var myKeyValue = _configuration["TvMazeUrl"];
 			try
 			{
 				using (var umbracoContextReference = _umbracoContextFactory.EnsureUmbracoContext())

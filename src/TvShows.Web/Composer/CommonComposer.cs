@@ -12,6 +12,7 @@ namespace TvShows.Web.Composer
 		{
 			builder.Services.AddSingleton<ITvShowService, TvShowService>();
 			builder.Services.AddSingleton<ISearchService, SearchService>();
+			
 		}
 	}
 }
