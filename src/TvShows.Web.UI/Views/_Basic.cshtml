@@ -22,7 +22,7 @@
     <meta name=viewport content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone-no">
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/basic.css">
     <link rel="stylesheet" href="/css/plugins.css">
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 	<script src="~/scripts/tvShowLibrary.js" defer></script>
@@ -34,23 +34,11 @@
 	<header class="ht-header">
 		<div class="container">
 			@await Html.PartialAsync("layout/Nav")
-			<!-- top search form -->
-			@await Html.PartialAsync("SearchMaster")
 		</div>
 	</header>
 	<!-- END | Header -->
 
-	<div class="hero common-hero">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="hero-ct">
-						<h1> @Model.Name</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="hero common-hero"></div>
 
 	<div class="page-single">
 		@RenderBody()

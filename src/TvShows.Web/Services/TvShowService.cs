@@ -218,22 +218,22 @@ namespace TvShows.Web.Utility
 					var contentLevel2 = _contentService.GetByLevel(3).ToList();
 					if(contentLevel2?.Any() ?? false)
 					{
-						var tvShowsLibraryId = contentLevel2.Where(s => s.ContentType.Alias == TvShow.ModelTypeAlias);
-						if(tvShowsLibraryId?.Any() ?? false)
+						var tvShowsContent = contentLevel2.Where(s => s.ContentType.Alias == TvShow.ModelTypeAlias);
+						if (tvShowsContent?.Any() ?? false)
 						{
-							foreach(var item in tvShowsLibraryId)
+							foreach (var item in tvShowsContent)
 							{
 								_contentService.Delete(_contentService.GetById(item.Id));
 							}
 						}
+					}
 
-						var mediaFile = _mediaService.GetByLevel(2);
-						if (mediaFile?.Any() ?? false)
+					var mediaFile = _mediaService.GetByLevel(2);
+					if (mediaFile?.Any() ?? false)
+					{
+						foreach (var item in mediaFile)
 						{
-							foreach (var item in mediaFile)
-							{
-								_mediaService.Delete(item);
-							}
+							_mediaService.Delete(item);
 						}
 					}
 				}

@@ -1,0 +1,27 @@
+{
+  "Name": "Login",
+  "Alias": "login",
+  "DefaultTemplate": "umb://template/257909757c4a405893c5c079a0b07602",
+  "AllowedTemplates": [
+    "umb://template/257909757c4a405893c5c079a0b07602"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-logout color-black",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowVaryingByCulture": true,
+    "AllowedChildContentTypes": []
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/6e5fc4aa0e7549e0967dffdb87e3575d",
+  "Dependencies": [
+    {
+      "Udi": "umb://template/257909757c4a405893c5c079a0b07602",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}

@@ -13,10 +13,28 @@
     "AllowedChildContentTypes": []
   },
   "CompositionContentTypes": [],
-  "PropertyGroups": [],
+  "PropertyGroups": [
+    {
+      "Key": "3c466160-a9bd-4996-a081-8442a8c5167f",
+      "Name": "Content",
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "5dcf02c5-3687-4091-8d44-15700a1e3891",
+          "Alias": "gridContent",
+          "DataType": "umb://data-type/7654eec384f9472eba33fbce90fbb9d4",
+          "Name": "Content"
+        }
+      ]
+    }
+  ],
   "PropertyTypes": [],
   "Udi": "umb://document-type/a84605dcf20f42e5b0db7d09263da230",
   "Dependencies": [
+    {
+      "Udi": "umb://data-type/7654eec384f9472eba33fbce90fbb9d4",
+      "Ordering": true
+    },
     {
       "Udi": "umb://template/e1ffa9034c1d42bab0d2bd038b0db937",
       "Ordering": true

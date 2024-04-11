@@ -1,0 +1,19 @@
+{
+  "Name": "Authentication page",
+  "Alias": "AuthenticationPage",
+  "File": "umb://template-file/AuthenticationPage.cshtml",
+  "Master": "umb://template/a2e6a4f49ecf44ef8ab0284411392fc1",
+  "Udi": "umb://template/5775f8b42e0d4ed685c0bff8532e2390",
+  "Dependencies": [
+    {
+      "Udi": "umb://template-file/AuthenticationPage.cshtml",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/a2e6a4f49ecf44ef8ab0284411392fc1",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.TemplateArtifact",
+  "__version": "13.1.0"
+}

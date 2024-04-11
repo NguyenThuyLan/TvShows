@@ -1,0 +1,14 @@
+{
+  "Name": "_Basic",
+  "Alias": "_Basic",
+  "File": "umb://template-file/_Basic.cshtml",
+  "Udi": "umb://template/a2e6a4f49ecf44ef8ab0284411392fc1",
+  "Dependencies": [
+    {
+      "Udi": "umb://template-file/_Basic.cshtml",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.TemplateArtifact",
+  "__version": "13.1.0"
+}

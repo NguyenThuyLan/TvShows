@@ -1,0 +1,6 @@
+﻿@using TvShows.Web.Models.Member.Forrm
+@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+
+@{
+    await Html.RenderPartialAsync("member/Registration", new RegistrationFormModel());
+}

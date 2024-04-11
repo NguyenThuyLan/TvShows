@@ -1,0 +1,43 @@
+{
+  "Name": "Image",
+  "Alias": "umbBlockGridDemoImageBlock",
+  "AllowedTemplates": [],
+  "Icon": "icon-umb-media color-black",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "IsElementType": true,
+    "AllowedChildContentTypes": []
+  },
+  "Parent": "umb://document-type-container/a89007112fea495cbd2aaffaec0f8807",
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "59dbfc5c-0f17-4371-a7f6-40d0c915d386",
+      "Name": "Content",
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "fb840222-6d31-429f-8166-b7955d16dcb7",
+          "Alias": "image",
+          "DataType": "umb://data-type/ad9f0cf2bda245d59ea1a63cfc873fd3",
+          "Mandatory": true,
+          "Name": "Image"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/fc71c2d08f15415282a1cbf6f4485ef3",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/ad9f0cf2bda245d59ea1a63cfc873fd3",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://document-type-container/a89007112fea495cbd2aaffaec0f8807",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}

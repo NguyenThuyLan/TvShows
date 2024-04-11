@@ -1,0 +1,59 @@
+﻿@using TvShows.Web.Controllers
+@using TvShows.Web.Models.Member.Forrm
+@model RegistrationFormModel
+
+@using (Html.BeginUmbracoForm<RegistrationController>("Submit", FormMethod.Post))
+{
+    <div class="field">
+        <p class="help is-danger">
+            @Html.ValidationMessage("exists")
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+            @Html.TextBoxFor(x => x.Name, new { @class = "input is-half" })
+            <p class="help is-danger">@Html.ValidationMessageFor(x => x.Name)</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            @Html.TextBoxFor(x => x.Email, new
+                {
+                    @class = "input is-half"
+                })
+            <p class="help is-danger">@Html.ValidationMessageFor(x => x.Email)</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            @Html.PasswordFor(x => x.Password, new
+                {
+                    @class = "input is-half"
+                })
+            <p class="help is-danger">@Html.ValidationMessageFor(x => x.Password)</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Repeat password</label>
+        <div class="control">
+            @Html.PasswordFor(x => x.PasswordRepeat, new
+                {
+                    @class = "input is-half"
+                })
+            <p class="help is-danger">@Html.ValidationMessageFor(x => x.PasswordRepeat)</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="submit" class="button is-link is-success" value="Register">
+        </div>
+    </div>
+}

@@ -1,0 +1,43 @@
+{
+  "Name": "Headline",
+  "Alias": "umbBlockGridDemoHeadlineBlock",
+  "AllowedTemplates": [],
+  "Icon": "icon-font color-black",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "IsElementType": true,
+    "AllowedChildContentTypes": []
+  },
+  "Parent": "umb://document-type-container/a89007112fea495cbd2aaffaec0f8807",
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "f168aa1c-ecfe-4b77-aa2f-82d8eb70e129",
+      "Name": "Content",
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "cdc1209e-3672-4894-9694-a55ecf63e786",
+          "Alias": "headline",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Mandatory": true,
+          "Name": "Headline"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/646a766016004a90aa4fab7717afc575",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://document-type-container/a89007112fea495cbd2aaffaec0f8807",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}

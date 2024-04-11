@@ -1,0 +1,60 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	var root = Model.Root();
+	var signUp = Model.Root().Children().Where(x => x.ContentType.Alias == AuthenticationPage.ModelTypeAlias).First();
+	var login = Model.Root().Children().Where(x => x.ContentType.Alias == Login.ModelTypeAlias).First();
+	var isLoggedIn = Context.User?.Identity.IsAuthenticated ?? false;
+}
+
+<nav class="navbar navbar-default navbar-custom">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header logo">
+		<a class="logo-tvshow" href="/">@root.Value("siteName")</a>
+	</div>
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav flex-child-menu menu-left">
+			@foreach (var child in Model.Root().Children().Where(x => x.IsVisible() && x.ContentType.Alias != AuthenticationPage.ModelTypeAlias && x.ContentType.Alias != Login.ModelTypeAlias))
+			{
+				<li class="dropdown first">
+					<a class="btn btn-default dropdown-toggle lv1" href="@child.Url()">
+						@child.Name
+					</a>
+				</li>
+			}
+		</ul>
+		<ul class="nav navbar-nav flex-child-menu menu-right">
+			<li class="nav-item lang-dropdown clickable" id="langDropdownParent">
+				<span class="nav-link">
+					@Umbraco.GetDictionaryValue($"{Model.GetCultureFromDomains()}") &#9662;
+				</span>
+
+				<div class="lang-dropdown-content" style="visibility:hidden" id="langDropdown">
+					@foreach (var (culture, infos) in root.Cultures)
+					{
+						var url = Model.Url(culture);
+						if (url == "#")
+						{
+							url = Model.Root().Url(culture);
+						}
+						if (culture != Model.GetCultureFromDomains().ToLower())
+						{
+							<a class="nav-link" href="@url">@Umbraco.GetDictionaryValue($"{culture}")</a>
+						}
+
+					}
+				</div>
+			</li>
+			@if (isLoggedIn)
+			{
+				<li class="loginLink"><a href="@login.Url()">Logout</a></li>
+			}
+			else
+			{
+				<li class="loginLink"><a href="@login.Url()">@login.Name</a></li>
+				<li class="btn signupLink"><a href="@signUp.Url()">@signUp.Name</a></li>
+			}
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</nav>

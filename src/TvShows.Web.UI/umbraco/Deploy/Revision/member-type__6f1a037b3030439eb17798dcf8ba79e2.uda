@@ -1,0 +1,16 @@
+{
+  "Name": "Store Member",
+  "Alias": "storeMember",
+  "Icon": "icon-user",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowedChildContentTypes": []
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [],
+  "PropertyTypes": [],
+  "Udi": "umb://member-type/6f1a037b3030439eb17798dcf8ba79e2",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.MemberTypeArtifact",
+  "__version": "13.1.0"
+}

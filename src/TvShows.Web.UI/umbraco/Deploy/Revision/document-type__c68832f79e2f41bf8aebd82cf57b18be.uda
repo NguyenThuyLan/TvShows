@@ -1,0 +1,43 @@
+{
+  "Name": "Rich Text",
+  "Alias": "umbBlockGridDemoRichTextBlock",
+  "AllowedTemplates": [],
+  "Icon": "icon-script color-black",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "IsElementType": true,
+    "AllowedChildContentTypes": []
+  },
+  "Parent": "umb://document-type-container/a89007112fea495cbd2aaffaec0f8807",
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "6e262909-9141-4a42-865e-8794b18a0660",
+      "Name": "Content",
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "0efce25a-a056-4177-9daf-c662f11c8fc6",
+          "Alias": "richText",
+          "DataType": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
+          "Mandatory": true,
+          "Name": "Text"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/c68832f79e2f41bf8aebd82cf57b18be",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://document-type-container/a89007112fea495cbd2aaffaec0f8807",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}

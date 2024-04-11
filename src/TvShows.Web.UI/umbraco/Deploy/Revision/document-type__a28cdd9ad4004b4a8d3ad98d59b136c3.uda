@@ -1,0 +1,45 @@
+{
+  "Name": "Authentication page",
+  "Alias": "authenticationPage",
+  "DefaultTemplate": "umb://template/5775f8b42e0d4ed685c0bff8532e2390",
+  "AllowedTemplates": [
+    "umb://template/5775f8b42e0d4ed685c0bff8532e2390"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-lock color-black",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowVaryingByCulture": true,
+    "AllowedChildContentTypes": []
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "75c3bdd4-091b-49a9-9992-e72aecacb02d",
+      "Name": "Content",
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "2a20917b-7dc0-4758-8843-1a36e907dddf",
+          "Alias": "contentGrid",
+          "DataType": "umb://data-type/b5567a9706d446a29994b35fdbed9cbd",
+          "Name": "Content Grid"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/a28cdd9ad4004b4a8d3ad98d59b136c3",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/b5567a9706d446a29994b35fdbed9cbd",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/5775f8b42e0d4ed685c0bff8532e2390",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}
