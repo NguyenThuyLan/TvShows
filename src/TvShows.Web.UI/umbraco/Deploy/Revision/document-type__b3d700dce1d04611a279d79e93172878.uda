@@ -38,7 +38,8 @@
           "Alias": "summary",
           "DataType": "umb://data-type/c6bac0dd4ab945b18e30e4b619ee5da3",
           "Name": "Summary",
-          "SortOrder": 2
+          "SortOrder": 2,
+          "VariesByCulture": true
         },
         {
           "Key": "6e41440d-9d60-46b7-be69-cab362de1291",
@@ -51,7 +52,8 @@
           "Key": "e0b44c6d-770f-4688-9832-a6906940be48",
           "Alias": "showTitle",
           "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
-          "Name": "ShowTitle"
+          "Name": "ShowTitle",
+          "VariesByCulture": true
         }
       ]
     }
