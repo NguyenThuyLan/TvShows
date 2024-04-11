@@ -13,10 +13,28 @@
     "AllowedChildContentTypes": []
   },
   "CompositionContentTypes": [],
-  "PropertyGroups": [],
+  "PropertyGroups": [
+    {
+      "Key": "dfb1eb10-161e-4ef2-a22b-3c214325c402",
+      "Name": "Content",
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "4bf74a83-65d4-47bd-866f-5a43b1663ce8",
+          "Alias": "loginContent",
+          "DataType": "umb://data-type/8e6e338bc0fc4ae2a33876c761d9e9e5",
+          "Name": "LoginContent"
+        }
+      ]
+    }
+  ],
   "PropertyTypes": [],
   "Udi": "umb://document-type/6e5fc4aa0e7549e0967dffdb87e3575d",
   "Dependencies": [
+    {
+      "Udi": "umb://data-type/8e6e338bc0fc4ae2a33876c761d9e9e5",
+      "Ordering": true
+    },
     {
       "Udi": "umb://template/257909757c4a405893c5c079a0b07602",
       "Ordering": true

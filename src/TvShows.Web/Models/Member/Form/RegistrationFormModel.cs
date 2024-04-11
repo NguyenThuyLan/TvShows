@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TvShows.Web.Models.Member.Forrm
+namespace TvShows.Web.Models.Member.Form
 {
 	public class RegistrationFormModel
 	{

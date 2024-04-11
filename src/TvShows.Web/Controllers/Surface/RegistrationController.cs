@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using TvShows.Web.Models.Member.Forrm;
+using TvShows.Web.Models.Member.Form;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Models;
@@ -56,9 +56,9 @@ namespace TvShows.Web.Controllers
                 return CurrentUmbracoPage();
             }
 
-            var result = await RegisterMemberAsync(model, true);
+            var result = await RegisterMemberAsync(model, true); 
 
-            if (!result.Succeeded)
+			if (!result.Succeeded)
             {
                 ModelState.AddModelError("exists", "Could not login: " + result);
             }

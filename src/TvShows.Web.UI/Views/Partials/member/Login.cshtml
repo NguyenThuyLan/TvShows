@@ -1,0 +1,45 @@
+﻿@using TvShows.Web.Controllers
+@using TvShows.Web.Models.Member.Form
+@model LoginFormModel
+
+
+@using (Html.BeginUmbracoForm<LoginController>("Submit", FormMethod.Post))
+{
+    <div class="field">
+        <p class="help is-danger">
+            @Html.ValidationMessage("error")
+        </p>
+    </div>
+
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            @Html.TextBoxFor(x => x.Email, new
+                {
+                    @class = "input is-half"
+                })
+            <p class="help is-danger">
+                @Html.ValidationMessageFor(x => x.Email)
+            </p>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            @Html.PasswordFor(x => x.Password, new
+                {
+                    @class = "input is-half"
+                })
+            <p class="help is-danger">
+                @Html.ValidationMessageFor(x => x.Password)
+            </p>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <input type="submit" class="button is-link is-success" value="Sign in">
+        </div>
+    </div>
+}

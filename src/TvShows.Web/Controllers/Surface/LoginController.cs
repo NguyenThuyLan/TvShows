@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TvShows.Web.Models.Member.Form;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -33,31 +34,31 @@ namespace TvShows.Web.Controllers
 			_memberModelBuilderFactory = memberModelBuilderFactory;
 			_signInManager = signInManager;
 		}
-		//[HttpPost]
-		//[ValidateAntiForgeryToken]
-		//public async Task<IActionResult> Submit(LoginFormModel model)
-		//{
-		//	if (!ModelState.IsValid) return CurrentUmbracoPage();
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Submit(LoginFormModel model)
+		{
+			if (!ModelState.IsValid) return CurrentUmbracoPage();
 
-		//	var profileModel = await _memberModelBuilderFactory.CreateProfileModel().BuildForCurrentMemberAsync();
-		//	var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, true);
+			var profileModel = await _memberModelBuilderFactory.CreateProfileModel().BuildForCurrentMemberAsync();
+			var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, true);
 
-		//	if (!result.Succeeded)
-		//	{
-		//		ModelState.AddModelError("error", "Unable to authenticate with the provided credentials.");
-		//		return CurrentUmbracoPage();
-		//	}
+			if (!result.Succeeded)
+			{
+				ModelState.AddModelError("error", "Unable to authenticate with the provided credentials.");
+				return CurrentUmbracoPage();
+			}
 
-		//	var signInResult = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, true);
+			var signInResult = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, true);
 
-		//	if (!signInResult.Succeeded)
-		//	{
-		//		ModelState.AddModelError("error", "Unable to authenticate with the provided credentials.");
-		//		return CurrentUmbracoPage();
-		//	}
+			if (!signInResult.Succeeded)
+			{
+				ModelState.AddModelError("error", "Unable to authenticate with the provided credentials.");
+				return CurrentUmbracoPage();
+			}
 
-		//	return Redirect("/");
-		//}
+			return Redirect("/");
+		}
 
 		[HttpGet]
 		public async Task<IActionResult> Logout()
