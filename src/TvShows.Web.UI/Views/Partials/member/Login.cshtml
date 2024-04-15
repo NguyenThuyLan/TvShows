@@ -12,12 +12,12 @@
             </p>
         </div>
         <div class="user-box">
-            @Html.TextBoxFor(x => x.Email, new
+            @Html.TextBoxFor(x => x.StoreUserName, new
                 {
                     @class = "input is-half"
                 })
             <p class="help is-danger">
-                @Html.ValidationMessageFor(x => x.Email)
+                @Html.ValidationMessageFor(x => x.StoreUserName)
             </p>
             <label>@Model.EmailLabel</label>
         </div>

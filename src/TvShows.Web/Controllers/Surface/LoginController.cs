@@ -41,7 +41,7 @@ namespace TvShows.Web.Controllers
 			if (!ModelState.IsValid) return CurrentUmbracoPage();
 
 			var profileModel = await _memberModelBuilderFactory.CreateProfileModel().BuildForCurrentMemberAsync();
-			var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, true);
+			var result = await _signInManager.PasswordSignInAsync(model.StoreUserName, model.Password, false, true);
 
 			if (!result.Succeeded)
 			{
@@ -49,7 +49,7 @@ namespace TvShows.Web.Controllers
 				return CurrentUmbracoPage();
 			}
 
-			var signInResult = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, true);
+			var signInResult = await _signInManager.PasswordSignInAsync(model.StoreUserName, model.Password, false, true);
 
 			if (!signInResult.Succeeded)
 			{

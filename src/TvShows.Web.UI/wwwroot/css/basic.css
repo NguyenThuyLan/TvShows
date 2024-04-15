@@ -10010,3 +10010,6 @@ footer.full-width-ft .ft-copyright {
     color: #fff;
     border-radius: 5px;
 }
+.is-danger {
+    color: #df2f2f
+}
