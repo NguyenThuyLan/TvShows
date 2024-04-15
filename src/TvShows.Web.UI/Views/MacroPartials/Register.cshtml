@@ -2,5 +2,21 @@
 @inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
 
 @{
-    await Html.RenderPartialAsync("member/Registration", new RegistrationFormModel());
+    var langCulture = Model.MacroParameters["langCulture"].ToString();
+    var titleForm = Model.MacroParameters["titleForm"].ToString();
+    var nameLabel = Model.MacroParameters["nameLabel"].ToString();
+    var emailLabel = Model.MacroParameters["emailLabel"].ToString();
+    var passwordLabel = Model.MacroParameters["passwordLabel"].ToString();
+    var passwordRepeatLabel = Model.MacroParameters["passwordRepeatLabel"].ToString();
+    var submitLabel = Model.MacroParameters["submitLabel"].ToString();
+    await Html.RenderPartialAsync("member/Registration", new RegistrationFormModel()
+    {
+        LangCulture = langCulture,
+        TitleForm = titleForm,
+        NameLabel = nameLabel,
+        EmailLabel = emailLabel,
+        PasswordLabel = passwordLabel,
+        PasswordRepeatLabel = passwordRepeatLabel,
+        SubmitLabel = submitLabel
+    });
 }

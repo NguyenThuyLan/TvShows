@@ -3,5 +3,17 @@
 
 
 @{
-    await Html.RenderPartialAsync("member/Login", new LoginFormModel());
+    var langCulture = Model.MacroParameters["langCulture"].ToString();
+    var title = Model.MacroParameters["title"].ToString();
+    var passwordLabel = Model.MacroParameters["passwordLabel"].ToString();
+    var emailLabel = Model.MacroParameters["emailLabel"].ToString();
+    var submitLabel = Model.MacroParameters["submitLabel"].ToString();
+    await Html.RenderPartialAsync("member/Login", new LoginFormModel()
+    {
+       LangCulture = langCulture,
+       Title = title,
+       PasswordLabel = passwordLabel,
+       EmailLabel = emailLabel,
+       SubmitLabel = submitLabel
+    });
 }

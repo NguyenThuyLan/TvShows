@@ -23,7 +23,8 @@
           "Key": "4bf74a83-65d4-47bd-866f-5a43b1663ce8",
           "Alias": "loginContent",
           "DataType": "umb://data-type/8e6e338bc0fc4ae2a33876c761d9e9e5",
-          "Name": "LoginContent"
+          "Name": "LoginContent",
+          "VariesByCulture": true
         }
       ]
     }

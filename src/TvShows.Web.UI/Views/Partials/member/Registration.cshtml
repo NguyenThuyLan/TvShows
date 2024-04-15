@@ -5,7 +5,7 @@
 @using (Html.BeginUmbracoForm<RegistrationController>("Submit", FormMethod.Post))
 {
     <div class="login-box">
-        <h2>Sign up</h2>
+        <h2>@Model.TitleForm</h2>
         <div class="field">
             <p class="help is-danger">
                 @Html.ValidationMessage("exists")
@@ -19,7 +19,7 @@
         <div class="user-box">
             @Html.TextBoxFor(x => x.StoreUserName, new { @class = "input is-half" })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.StoreUserName)</p>
-            @Html.LabelFor(x => x.StoreUserName)
+            <label>@Model.NameLabel</label>
         </div>
         <div class="user-box">
             @Html.TextBoxFor(x => x.Email, new
@@ -27,7 +27,7 @@
                     @class = "input is-half"
                 })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.Email)</p>
-            @Html.LabelFor(x => x.Email)
+            <label>@Model.EmailLabel</label>
         </div>
         <div class="user-box">
             @Html.PasswordFor(x => x.Password, new
@@ -35,7 +35,7 @@
                     @class = "input is-half"
                 })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.Password)</p>
-            @Html.LabelFor(x => x.Password)
+            <label>@Model.PasswordLabel</label>
         </div>
         <div class="user-box">
             @Html.PasswordFor(x => x.PasswordRepeat, new
@@ -43,9 +43,9 @@
                     @class = "input is-half"
                 })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.PasswordRepeat)</p>
-            @Html.LabelFor(x => x.PasswordRepeat)
+            <label>@Model.PasswordRepeatLabel</label>
         </div>
-        <input type="submit" class="button-submit" value="Sign up">
+        <input type="submit" class="button-submit" value="@Model.SubmitLabel">
     </div>
 
    

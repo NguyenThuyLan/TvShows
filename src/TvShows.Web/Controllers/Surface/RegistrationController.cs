@@ -23,6 +23,7 @@ namespace TvShows.Web.Controllers
         private readonly IMemberService _memberService;
         private readonly IMemberManager _memberManager;
         private readonly IScopeProvider _scopeProvider;
+        private readonly ILocalizationService _localizationService;
 
         public RegistrationController(
             IUmbracoContextAccessor umbracoContextAccessor,
@@ -34,13 +35,15 @@ namespace TvShows.Web.Controllers
             IMemberSignInManager memberSignInManager,
             IMemberService memberService,
             IMemberManager memberManager,
-            IScopeProvider scopeProvider)
+            IScopeProvider scopeProvider,
+            ILocalizationService localizationService)
             : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
             _memberSignInManager = memberSignInManager;
             _memberService = memberService;
             _memberManager = memberManager;
             _scopeProvider = scopeProvider;
+            _localizationService = localizationService; 
         }
 
         [HttpPost]
@@ -49,10 +52,11 @@ namespace TvShows.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                //foreach(var key in ModelState.Keys)
+                //var langugages = _localizationService.GetAllLanguages();
+                //foreach (var key in ModelState.Keys)
                 //{
                 //    var errors = ModelState[key].Errors;
-                //    if(errors != null && errors.Any())
+                //    if (errors != null && errors.Any())
                 //    {
                 //        ModelState[key].Errors.Clear();
                 //        var errorMessage = $"this is custom message";

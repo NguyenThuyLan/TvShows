@@ -3,7 +3,56 @@
   "Alias": "Register",
   "MacroSource": "~/Views/MacroPartials/Register.cshtml",
   "UseInEditor": true,
-  "Properties": [],
+  "Properties": [
+    {
+      "Key": "1b24f5e5-d194-4c88-92c6-6a9302bb95ab",
+      "Alias": "submitLabel",
+      "Name": "Submit Label",
+      "SortOrder": 6,
+      "EditorAlias": "Umbraco.TextBox"
+    },
+    {
+      "Key": "40b2a1d0-8a9b-4f92-b34d-f98bde0b4aac",
+      "Alias": "passwordRepeatLabel",
+      "Name": "Password Repeat Label",
+      "SortOrder": 5,
+      "EditorAlias": "Umbraco.TextBox"
+    },
+    {
+      "Key": "410a065a-d95a-4203-a679-a2f82501af1b",
+      "Alias": "nameLabel",
+      "Name": "Name Label",
+      "SortOrder": 2,
+      "EditorAlias": "Umbraco.TextBox"
+    },
+    {
+      "Key": "4470402d-07cc-4af2-a062-3dc23198006b",
+      "Alias": "passwordLabel",
+      "Name": "Password Label",
+      "SortOrder": 4,
+      "EditorAlias": "Umbraco.TextBox"
+    },
+    {
+      "Key": "5f226bb1-919f-4905-8920-612bdee0c048",
+      "Alias": "langCulture",
+      "Name": "Lang Culture",
+      "EditorAlias": "Umbraco.TextBox"
+    },
+    {
+      "Key": "965291de-ee3c-41a9-979c-808c498c0c1d",
+      "Alias": "emailLabel",
+      "Name": "Email Label",
+      "SortOrder": 3,
+      "EditorAlias": "Umbraco.TextBox"
+    },
+    {
+      "Key": "fd508e2a-b179-4c15-bb87-e151b297732c",
+      "Alias": "titleForm",
+      "Name": "Title Form",
+      "SortOrder": 1,
+      "EditorAlias": "Umbraco.TextBox"
+    }
+  ],
   "Udi": "umb://macro/d6d2696378fe4c6d9f65217971d975c6",
   "Dependencies": [
     {

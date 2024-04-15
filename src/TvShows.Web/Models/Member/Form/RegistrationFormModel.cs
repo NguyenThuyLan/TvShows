@@ -6,21 +6,27 @@ namespace TvShows.Web.Models.Member.Form
 	{
 		[Required]
 		[EmailAddress]
-		[Display(Name = "Your Email")]
 		public string Email { get; set; }
 
 		[Required]
-        [Display(Name = "Name")]
         public string StoreUserName { get; set; }
 
 		[Required]
 		[MinLength(10, ErrorMessage = "You password has to be at least 10 characters.")]
-        [Display(Name = "Password")]
         public string Password { get; set; }
 
 		[Required]
 		[Compare("Password", ErrorMessage = "Your passwords do not match.")]
-        [Display(Name = "Password Repeat")]
         public string PasswordRepeat { get; set; }
-	}
+
+        #region labelString
+        public string LangCulture { get; set; }
+        public string TitleForm { get; set; }
+        public string NameLabel { get; set; }
+        public string EmailLabel { get; set; }
+        public string PasswordLabel { get; set; }
+        public string PasswordRepeatLabel { get; set; }
+        public string SubmitLabel { get; set; }
+        #endregion
+    }
 }

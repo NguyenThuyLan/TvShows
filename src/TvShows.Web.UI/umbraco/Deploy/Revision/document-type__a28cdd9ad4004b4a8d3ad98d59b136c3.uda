@@ -23,7 +23,8 @@
           "Key": "2a20917b-7dc0-4758-8843-1a36e907dddf",
           "Alias": "contentGrid",
           "DataType": "umb://data-type/b5567a9706d446a29994b35fdbed9cbd",
-          "Name": "Content Grid"
+          "Name": "Content Grid",
+          "VariesByCulture": true
         }
       ]
     }
