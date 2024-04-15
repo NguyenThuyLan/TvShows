@@ -5,8 +5,6 @@
 	Layout = "_Basic.cshtml";
 }
 
-<div class="page-single">
-    <div class="container">
-        @await Html.GetBlockGridHtmlAsync(Model, "loginContent")
-    </div>
+<div class="container">
+    @await Html.GetBlockGridHtmlAsync(Model, "loginContent")
 </div>

@@ -4,8 +4,6 @@
 @{
 	Layout = "_Basic.cshtml";
 }
-<div class="page-single">
-    <div class="container">
-        @await Html.GetBlockGridHtmlAsync(Model, "contentGrid")
-    </div>
+<div class="container">
+    @await Html.GetBlockGridHtmlAsync(Model, "contentGrid")
 </div>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TvShows.Web.Models
 {
-	public class Appsettings
+	public class Appsettings 
 	{
         public string MyProperty { get; set; }
     }

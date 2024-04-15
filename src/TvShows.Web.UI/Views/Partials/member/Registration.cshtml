@@ -4,56 +4,49 @@
 
 @using (Html.BeginUmbracoForm<RegistrationController>("Submit", FormMethod.Post))
 {
-    <div class="field">
-        <p class="help is-danger">
-            @Html.ValidationMessage("exists")
-        </p>
-    </div>
-
-    <div class="field">
-        <label class="label">Name</label>
-        <div class="control">
+    <div class="login-box">
+        <h2>Sign up</h2>
+        <div class="field">
+            <p class="help is-danger">
+                @Html.ValidationMessage("exists")
+            </p>
+        </div>
+        <div class="field">
+            <p class="help is-danger">
+                @Html.ValidationMessage("error")
+            </p>
+        </div>
+        <div class="user-box">
             @Html.TextBoxFor(x => x.StoreUserName, new { @class = "input is-half" })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.StoreUserName)</p>
+            @Html.LabelFor(x => x.StoreUserName)
         </div>
-    </div>
-
-    <div class="field">
-        <label class="label">Email</label>
-        <div class="control">
+        <div class="user-box">
             @Html.TextBoxFor(x => x.Email, new
                 {
                     @class = "input is-half"
                 })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.Email)</p>
+            @Html.LabelFor(x => x.Email)
         </div>
-    </div>
-
-    <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
+        <div class="user-box">
             @Html.PasswordFor(x => x.Password, new
                 {
                     @class = "input is-half"
                 })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.Password)</p>
+            @Html.LabelFor(x => x.Password)
         </div>
-    </div>
-
-    <div class="field">
-        <label class="label">Repeat password</label>
-        <div class="control">
+        <div class="user-box">
             @Html.PasswordFor(x => x.PasswordRepeat, new
                 {
                     @class = "input is-half"
                 })
             <p class="help is-danger">@Html.ValidationMessageFor(x => x.PasswordRepeat)</p>
+            @Html.LabelFor(x => x.PasswordRepeat)
         </div>
+        <input type="submit" class="button-submit" value="Sign up">
     </div>
 
-    <div class="field">
-        <div class="control">
-            <input type="submit" class="button is-link is-success" value="Register">
-        </div>
-    </div>
+   
 }

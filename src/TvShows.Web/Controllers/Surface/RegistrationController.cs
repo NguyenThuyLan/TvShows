@@ -47,8 +47,25 @@ namespace TvShows.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Submit(RegistrationFormModel model)
         {
-            if (!ModelState.IsValid) return CurrentUmbracoPage();
-
+            if (!ModelState.IsValid)
+            {
+                //foreach(var key in ModelState.Keys)
+                //{
+                //    var errors = ModelState[key].Errors;
+                //    if(errors != null && errors.Any())
+                //    {
+                //        ModelState[key].Errors.Clear();
+                //        var errorMessage = $"this is custom message";
+                //        ModelState[key].Errors.Add(errorMessage);
+                //    }
+                //    else
+                //    {
+                //        ModelState[key].Errors.Clear();
+                //    }
+                //}
+                return CurrentUmbracoPage();
+            } 
+                
             var existing = _memberService.GetByEmail(model.Email);
             if (existing != null)
             {
@@ -70,7 +87,7 @@ namespace TvShows.Web.Controllers
         {
             using IScope scope = _scopeProvider.CreateScope(autoComplete: true);
 
-            var identityUser = MemberIdentityUser.CreateNew(model.Email, model.Email, "storeMember", true);
+            var identityUser = MemberIdentityUser.CreateNew(model.StoreUserName, model.Email, "storeMember", true);
 
             IdentityResult identityResult = await _memberManager.CreateAsync(
                 identityUser,

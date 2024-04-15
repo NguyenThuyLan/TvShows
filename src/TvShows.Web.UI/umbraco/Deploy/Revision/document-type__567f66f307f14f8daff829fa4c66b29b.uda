@@ -27,6 +27,22 @@
       "Alias": "header",
       "PropertyTypes": [
         {
+          "Key": "0814d4a8-5f54-4529-8948-a72c96dc287f",
+          "Alias": "logoutTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "LogoutTitle",
+          "SortOrder": 2,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "73d9d6ca-4e91-4ee7-b566-96c298ec0c55",
+          "Alias": "helloUser",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "HelloUser",
+          "SortOrder": 3,
+          "VariesByCulture": true
+        },
+        {
           "Key": "85a7b03b-1aaa-41ed-bc70-8c555d3796a3",
           "Alias": "placeholderSearch",
           "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",

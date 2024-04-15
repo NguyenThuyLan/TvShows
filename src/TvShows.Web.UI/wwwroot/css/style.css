@@ -8317,3 +8317,10 @@ footer.full-width-ft .ft-copyright {
     display: block;
     padding: 9px 0px;
 }
+.userName {
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+}
