@@ -16,6 +16,7 @@ if (builder.Environment.IsProduction())
 }
 WebApplication app = builder.Build();
 
+// Making a change so that it deploys
 await app.BootUmbracoAsync();
 
 app.UseHttpsRedirection();
