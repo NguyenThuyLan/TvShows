@@ -1,16 +1,9 @@
 ﻿using Examine;
-using Examine.Search;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TvShows.Web.Models;
 using TvShows.Web.Services.Interfaces;
 using Umbraco.Cms.Core;
+using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Web;
 using Umbraco.Cms.Infrastructure.Examine;
 using Umbraco.Cms.Web.Common.PublishedModels;
@@ -22,11 +15,17 @@ namespace TvShows.Web.Services
 		private readonly ILogger<SearchService> _logger;
 		private readonly IExamineManager _examineManager;
 		private readonly IUmbracoContextAccessor _umbracoContextAccessor;
-        public SearchService(ILogger<SearchService> logger, IExamineManager examineManager, IUmbracoContextAccessor umbracoContextAccessor)
+		private readonly IProfiler _profiler;
+        public SearchService(
+			ILogger<SearchService> logger, 
+			IExamineManager examineManager,
+			IUmbracoContextAccessor umbracoContextAccessor,
+			IProfiler profiler)
         {
 			_examineManager = examineManager;
 			_umbracoContextAccessor = umbracoContextAccessor;
 			_logger = logger;
+			_profiler = profiler;
 
 		}
 		public IEnumerable<SearchResultItem> GetContentSearchResults(string searchTerm, out long totalItemCount)
@@ -35,22 +34,25 @@ namespace TvShows.Web.Services
 			var items = new List<SearchResultItem>();
 			if (pageOfResults != null && pageOfResults.Any())
 			{
-				foreach (var item in pageOfResults)
+				using (_profiler.Step("Search logic"))
 				{
 					if (_umbracoContextAccessor.TryGetUmbracoContext(out var umbracoContext))
 					{
-						var page = umbracoContext.Content.GetById(int.Parse(item.Id));
-						if (page != null)
+						foreach (var item in pageOfResults)
 						{
-							items.Add(new SearchResultItem()
+							var page = umbracoContext.Content.GetById(int.Parse(item.Id));
+							if (page != null)
 							{
-								PublishedItem = page as TvShow,
-								Score = item.Score
-							});
+								items.Add(new SearchResultItem()
+								{
+									PublishedItem = page as TvShow,
+									Score = item.Score
+								});
+							}
 						}
 					}
 				}
-			}
+            }
 			return items;
 		}
 
@@ -62,10 +64,8 @@ namespace TvShows.Web.Services
 			{
 				var searcher = index.Searcher;
 				var fieldToSearch = "showTitle";// + "_" + CultureInfo.CurrentCulture.ToString().ToLower();
-				var hideFromNavigation = "umbracoNaviHide";
 				var criteria = searcher.CreateQuery(IndexTypes.Content);
 				var examineQuery = criteria.Field(fieldToSearch, searchTerm.MultipleCharacterWildcard());
-				examineQuery.Not().Field(hideFromNavigation, 1.ToString());
 				var results = examineQuery.Execute();
 				totalItemCount = results.TotalItemCount;
 				if (results.Any())
