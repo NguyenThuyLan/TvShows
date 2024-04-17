@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TvShows.Web.Models.Review
+﻿namespace TvShows.Web.Models.Review
 {
     public sealed class TvShowReview
     {
