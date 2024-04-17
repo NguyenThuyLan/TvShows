@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TvShows.Web.Models
 {
-	public class Appsettings 
-	{
-        public string MyProperty { get; set; }
+    public class Appsettings
+    {
+        public string TvMazeUrl { get; set; }
     }
 }

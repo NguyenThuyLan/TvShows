@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using TvShows.Web.Models.Member.Form;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
@@ -52,6 +53,7 @@ namespace TvShows.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var currentCulture = CultureInfo.CurrentCulture.ToString();
                 //var langugages = _localizationService.GetAllLanguages();
                 //foreach (var key in ModelState.Keys)
                 //{

@@ -1,6 +1,7 @@
 ﻿using MailKit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Net;
 using System.Net.Http.Formatting;
 using TvShows.Web.Models;
@@ -19,7 +20,6 @@ namespace TvShows.Web.Utility
 {
 	public class TvShowService : ITvShowService
 	{
-		private readonly IConfiguration _configuration;
 		private readonly IUmbracoContextFactory _umbracoContextFactory;
 		private readonly IContentService _contentService;
 		private readonly IMediaService _mediaService;
@@ -29,8 +29,9 @@ namespace TvShows.Web.Utility
 		private readonly IContentTypeBaseServiceProvider _contentTypeBaseServiceProvider;
 		private readonly ILogger<TvShowService> _logger;
 		private readonly IVariationContextAccessor _variationContextAccessor;
+        private readonly Appsettings _appSettings;
 
-		Dictionary<string, string> Descriptions = new() {
+        Dictionary<string, string> Descriptions = new() {
 		{ "en-US", "was a great TV Show" },
 		{ "da", "som et godt tv-program" },
 		{ "vi", "Một TV Show tuyệt vời" }
@@ -45,7 +46,7 @@ namespace TvShows.Web.Utility
 		IContentTypeBaseServiceProvider contentTypeBaseServiceProvider,
 		ILogger<TvShowService> logger,
 		IVariationContextAccessor variationContextAccessor,
-		IConfiguration configuration) 
+        IOptions<Appsettings> appSettings) 
 		{
 			_umbracoContextFactory = umbracoContextFactory;
 			_contentService = contentService;
@@ -56,8 +57,8 @@ namespace TvShows.Web.Utility
 			_contentTypeBaseServiceProvider = contentTypeBaseServiceProvider;
 			_logger = logger;
 			_variationContextAccessor = variationContextAccessor;
-			_configuration = configuration;
-		}
+            _appSettings = appSettings.Value;
+        }
 
 		public string MoveTvShowsFromTvMazeToUmbraco()
 		{
@@ -141,7 +142,7 @@ namespace TvShows.Web.Utility
 		public IMedia ImportMediaFromTVMazeToUmbraco(TvShowModel tvShow)
 		{
 
-			if (tvShow == null || string.IsNullOrEmpty(tvShow.Name) || string.IsNullOrEmpty(tvShow.Image?.Original))
+            if (tvShow == null || string.IsNullOrEmpty(tvShow.Name) || string.IsNullOrEmpty(tvShow.Image?.Original))
 			{
 				return null;
 			}
@@ -206,7 +207,6 @@ namespace TvShows.Web.Utility
 
 		public void DeleteTvShows()
 		{
-			var myKeyValue = _configuration["TvMazeUrl"];
 			try
 			{
 				using (var umbracoContextReference = _umbracoContextFactory.EnsureUmbracoContext())
