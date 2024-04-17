@@ -22,6 +22,7 @@ namespace TvShows.Web.Common.Context
                 entity.Property(e => e.Email).HasColumnName("email");
                 entity.Property(e => e.Review).HasColumnName("review");
                 entity.Property(e => e.Website).HasColumnName("website");
+                entity.Property(e => e.IsApproved).HasColumnName("isApproved");
             });
     }
 }

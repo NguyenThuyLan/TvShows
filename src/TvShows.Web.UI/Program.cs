@@ -1,8 +1,12 @@
 
 using Hangfire;
 using Microsoft.Extensions.Options;
+using System;
+using TvShows.Web.Common.Actions;
 using TvShows.Web.Models;
+using TvShows.Web.Models.Review;
 using TvShows.Web.Utility;
+using Umbraco.UIBuilder.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +14,47 @@ builder.CreateUmbracoBuilder()
     .AddBackOffice()
     .AddWebsite()
     .AddDeliveryApi()
+    .AddUIBuilder(cfg =>
+    {
+        cfg.AddSectionAfter("media", "Repositories", sectionConfig => sectionConfig
+        .Tree(treeConfig => treeConfig
+            .AddCollection<TvShowReview>(x => x.Id, "TvShowReview", "TvShowReviews", "A person entity", "icon-umb-users", "icon-umb-users", collectionConfig => collectionConfig
+                //.AddAction<EditTvShowReviewAction>(actionConfig => actionConfig
+                //    .SetVisibility(x=>x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Bulk
+                //        || x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Row)
+                //    )
+                .AddAction<ApproveTvShowReviewAction>(actionConfig => actionConfig
+                    .SetVisibility(x => x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Bulk
+                        || x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Row)
+                    )
+                .SetNameProperty(p => p.UserName)
+                .ListView(listViewConfig => listViewConfig
+                    .AddField(p => p.Email)
+                    .AddField(p => p.Website)
+                    .AddField(p => p.Review)
+                    .AddField(p=>p.IsApproved, fieldConfig =>
+                    {
+                        fieldConfig.SetHeading("Approved");
+                    })
+                )
+                .Editor(editorConfig => editorConfig
+                    .AddTab("General", tabConfig => tabConfig
+                        .AddFieldset("General", fieldsetConfig => fieldsetConfig
+                            .AddField(p => p.Email).SetValidationRegex("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+")
+                            .AddField(p=>p.Website)
+                            .AddField(p=>p.Review)
+                            .AddField(p=>p.TvShowKey).SetValidationRegex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+                        )
+                        //.AddFieldset("Media", fieldsetConfig => fieldsetConfig
+                        //    .AddField(p => p.Avatar).SetDataType("Upload File")
+                        //)
+                    )
+                )
+            )
+        )
+    );
+
+    })
     .AddComposers()
     .Build();
 if (builder.Environment.IsProduction())

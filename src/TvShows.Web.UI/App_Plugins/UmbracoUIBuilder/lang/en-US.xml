@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+  <creator>
+    <name>UI Builder</name>
+    <link>https://umbraco.com</link>
+  </creator>
+  <area alias="sections">
+    <key alias="uibuilder">UI Builder</key>
+    <key alias="repositories" autogen="true">Repositories</key>
+  </area>
+  <area alias="dashboardTabs">
+    <key alias="summary">Summary</key>
+    <key alias="uibuilder">UI Builder</key>
+  </area>
+  <area alias="actions">
+    <key alias="delete" autogen="true">Delete</key>
+    <key alias="save-and-delete" autogen="true">Save &amp; Delete</key>
+    <key alias="editaction" autogen="true">Edit</key>
+    <key alias="save-and-editaction" autogen="true">Save &amp; Edit</key>
+    <key alias="approveaction" autogen="true">Approve</key>
+    <key alias="save-and-approveaction" autogen="true">Save &amp; Approve</key>
+  </area>
+</language>
