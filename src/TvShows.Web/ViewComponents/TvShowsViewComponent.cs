@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Polly.Caching;
 using TvShows.Web.Models;
 using TvShows.Web.Models.ViewComponentModels;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Web;
-using Umbraco.Cms.Web.Common;
 using Umbraco.Cms.Web.Common.PublishedModels;
 
 namespace TvShows.Web.ViewComponents
@@ -41,7 +38,6 @@ namespace TvShows.Web.ViewComponents
 					var total = contentParent.Children<TvShow>().Count();
 					var totalPages = (int)Math.Ceiling((double)total / (double)pageSize);
 					var children = contentParent.Children<TvShow>().ToList().GetRange((pageIndex - 1) * pageSize, pageSize);
-					_logger.LogInformation($"TvShowsViewComponent:Getdata: childrenCount = {contentParent.Children<TvShow>().Count()}");
 					if (children.Count > 0)
 					{
 						foreach (var child in children)
@@ -76,7 +72,6 @@ namespace TvShows.Web.ViewComponents
 				_logger.LogError(ex, $"TvShowsViewComponent:Invoke:{ex.Message}");
             }
 
-			_logger.LogInformation($"TvShowsViewComponent:Getdata: totalCount = {paginationModel.TotalCount}, pageIndex = {pageIndex}, pageSize = {pageSize}");
 			return View(paginationModel);
 		}
     }

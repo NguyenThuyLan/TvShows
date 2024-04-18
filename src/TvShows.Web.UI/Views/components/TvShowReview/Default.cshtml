@@ -1,2 +1,25 @@
-﻿ @using TvShows.Web.Models.ViewComponentModels;
- @model TvShows.Web.Models;
+﻿@model TvShows.Web.Models.ViewComponentModels.Review;
+@using TvShows.Web.Controllers
+
+@using (Html.BeginUmbracoForm<TvShowReviewController>("Submit"))
+{
+	<h4>Leave a comment</h4>
+	@Html.ValidationSummary()
+	<div class="row">
+		<div class="col-md-4">
+			@Html.TextBoxFor(model => model.UserName, new { placeholder = "Your name" })
+		</div>
+		<div class="col-md-4">
+			@Html.TextBoxFor(model => model.Email, new { placeholder = "Your email" })
+		</div>
+		<div class="col-md-4">
+			@Html.TextBoxFor(model => model.Website, new { placeholder = "Website" })
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			@Html.TextAreaFor(model => model.Message, new { placeholder = "Message" })
+		</div>
+	</div>
+	<input class="submit" type="submit" placeholder="submit">
+}

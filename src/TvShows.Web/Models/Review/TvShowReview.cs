@@ -1,4 +1,5 @@
 ﻿using NPoco;
+using System.ComponentModel.DataAnnotations;
 using Umbraco.Cms.Infrastructure.Persistence.DatabaseAnnotations;
 
 namespace TvShows.Web.Models.Review
@@ -10,6 +11,7 @@ namespace TvShows.Web.Models.Review
         [PrimaryKeyColumn]
         public int Id { get; set; }
         public Guid? TvShowKey { get; set; }
+        public string TvShowTitle { get; set; } = string.Empty;
         public required string UserName { get; set; }
         public required string Email { get; set; }
         public required string Website { get; set; }

@@ -19,10 +19,6 @@ builder.CreateUmbracoBuilder()
         cfg.AddSectionAfter("media", "Repositories", sectionConfig => sectionConfig
         .Tree(treeConfig => treeConfig
             .AddCollection<TvShowReview>(x => x.Id, "TvShowReview", "TvShowReviews", "A person entity", "icon-umb-users", "icon-umb-users", collectionConfig => collectionConfig
-                //.AddAction<EditTvShowReviewAction>(actionConfig => actionConfig
-                //    .SetVisibility(x=>x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Bulk
-                //        || x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Row)
-                //    )
                 .AddAction<ApproveTvShowReviewAction>(actionConfig => actionConfig
                     .SetVisibility(x => x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Bulk
                         || x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Row)
@@ -31,6 +27,10 @@ builder.CreateUmbracoBuilder()
                 .ListView(listViewConfig => listViewConfig
                     .AddField(p => p.Email)
                     .AddField(p => p.Website)
+                    .AddField(p=>p.TvShowTitle, fieldConfig =>
+                    {
+                        fieldConfig.SetHeading("Tv Show");
+                    })
                     .AddField(p => p.Review)
                     .AddField(p=>p.IsApproved, fieldConfig =>
                     {
