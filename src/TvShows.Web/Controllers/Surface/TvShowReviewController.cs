@@ -60,7 +60,7 @@ namespace TvShows.Web.Controllers
 						Email = currentMember?.Email ?? "",
 						UserName = currentMember?.UserName ?? "",
 						Review = review.Message,
-						TvShowTitle = CurrentPage?.Name ?? string.Empty
+						TvShowTitle = CurrentPage?.Name ?? ""
 					};
 
 					using IEfCoreScope<TvShowContext> scope = _efCoreScopeProvider.CreateScope();

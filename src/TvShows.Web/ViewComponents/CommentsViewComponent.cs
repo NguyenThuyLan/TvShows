@@ -25,7 +25,7 @@ namespace TvShows.Web.ViewComponents
 
 			scope.ExecuteWithContextAsync<Task>(async db =>
 			{
-				reviews = db.TvShowReviews.Where(x => x.TvShowKey == model.Key && x.IsApproved == true).ToArray();
+				reviews = db.TvShowReviews.Where(x => model.Key.Equals(x.TvShowKey) && x.IsApproved == true).ToArray();
 				if(reviews.Any())
 				{
 					comment.Total = reviews.Count();
