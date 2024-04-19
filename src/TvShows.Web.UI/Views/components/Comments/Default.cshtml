@@ -1,0 +1,20 @@
+﻿ @using TvShows.Web.Models.ViewComponentModels;
+  @model TvShows.Web.Models.Review.CommentModel;
+
+<h4>@Model.Total Comments</h4>
+@if(Model.Reviews?.Any() ?? false)
+{
+	@foreach (var item in Model.Reviews)
+	{
+		<div class="cmt-item flex-it">
+			@* <img src="images/uploads/author.png" alt=""> *@
+			<div class="author-infor">
+				<div class="flex-it2">
+					<h6><a href="#">@item.UserName</a></h6> <span class="time"> - @item.CreatedDate</span>
+				</div>
+				<p>@item.Review</p>
+				@* <p><a class="rep-btn" href="#">+ Reply</a></p> *@
+			</div>
+		</div>
+	}
+}

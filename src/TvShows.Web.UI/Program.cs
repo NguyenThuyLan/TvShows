@@ -29,14 +29,15 @@ builder.CreateUmbracoBuilder()
                     .AddField(p => p.Website)
                     .AddField(p=>p.TvShowTitle, fieldConfig =>
                     {
-                        fieldConfig.SetHeading("Tv Show");
+                        fieldConfig.SetHeading("TvShow");
                     })
                     .AddField(p => p.Review)
                     .AddField(p=>p.IsApproved, fieldConfig =>
                     {
                         fieldConfig.SetHeading("Approved");
                     })
-                )
+					.AddField(p => p.CreatedDate)
+				)
                 .Editor(editorConfig => editorConfig
                     .AddTab("General", tabConfig => tabConfig
                         .AddFieldset("General", fieldsetConfig => fieldsetConfig

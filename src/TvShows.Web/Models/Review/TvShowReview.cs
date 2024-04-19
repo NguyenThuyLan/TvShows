@@ -1,5 +1,4 @@
 ﻿using NPoco;
-using System.ComponentModel.DataAnnotations;
 using Umbraco.Cms.Infrastructure.Persistence.DatabaseAnnotations;
 
 namespace TvShows.Web.Models.Review
@@ -17,5 +16,6 @@ namespace TvShows.Web.Models.Review
         public required string Website { get; set; }
         public string Review { get; set; } = string.Empty;
         public bool IsApproved { get; set; } = false;
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

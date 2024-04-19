@@ -2,7 +2,7 @@
 
 namespace TvShows.Web.Models.ViewComponentModels
 {
-	public sealed class Review
+	public sealed class ReviewModel
 	{
 		[Display(Name = "Name")]
         [Required]

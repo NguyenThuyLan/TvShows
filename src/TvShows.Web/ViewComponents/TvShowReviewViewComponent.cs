@@ -8,7 +8,7 @@ namespace TvShows.Web.ViewComponents
     {
         public IViewComponentResult Invoke()
         {
-            return View(new Review());
+            return View(new ReviewModel());
         }
     }
 }

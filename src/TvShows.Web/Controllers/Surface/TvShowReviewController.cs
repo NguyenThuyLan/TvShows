@@ -35,7 +35,7 @@ namespace TvShows.Web.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Submit(Review review)
+		public async Task<IActionResult> Submit(ReviewModel review)
 		{
 			try
 			{
