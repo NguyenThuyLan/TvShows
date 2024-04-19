@@ -19,10 +19,10 @@ namespace TvShows.Web.Common.Context
                 entity.Property(e => e.Id).HasColumnName("id").ValueGeneratedOnAdd();
                 entity.Property(e => e.TvShowKey).HasColumnName("tvShowKey");
                 entity.Property(e => e.TvShowTitle).HasColumnName("tvShowTitle");
+                entity.Property(e => e.MemberId).HasColumnName("memberId");
                 entity.Property(e => e.UserName).HasColumnName("userName");
                 entity.Property(e => e.Email).HasColumnName("email");
                 entity.Property(e => e.Review).HasColumnName("review");
-                entity.Property(e => e.Website).HasColumnName("website");
                 entity.Property(e => e.IsApproved).HasColumnName("isApproved");
                 entity.Property(e => e.CreatedDate).HasColumnName("createdDate");
             });

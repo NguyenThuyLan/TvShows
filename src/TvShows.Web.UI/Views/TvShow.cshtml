@@ -4,6 +4,7 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "_Layout.cshtml";
+	var isLoggedIn = Context.User?.Identity.IsAuthenticated ?? false;
 }
 <!-- blog detail section-->
 <div class="page-single">
@@ -40,7 +41,14 @@
 						@await Component.InvokeAsync("Comments", new {model = Model})
 					</div>
 					<div class="comment-form">
-						@await Component.InvokeAsync("TvShowReview")
+						@if (isLoggedIn)
+						{
+							@await Component.InvokeAsync("TvShowReview")
+						}
+						else
+						{
+							<a href="/login"><h4>Login to comment</h4></a>
+						}
 					</div>
 					<!-- comment form -->
 				</div>

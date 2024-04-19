@@ -15,7 +15,6 @@ namespace TvShows.Web.Controllers
 {
 	public class LoginController : SurfaceController
 	{
-		private readonly IMemberManager _memberManager;
 		private readonly MemberModelBuilderFactory _memberModelBuilderFactory;
 		private readonly IMemberSignInManager _signInManager;
 		public LoginController(
@@ -25,12 +24,10 @@ namespace TvShows.Web.Controllers
 			AppCaches appCaches,
 			IProfilingLogger profilingLogger, 
 			IPublishedUrlProvider publishedUrlProvider,
-			IMemberManager memberManager,
 			MemberModelBuilderFactory memberModelBuilderFactory,
 			IMemberSignInManager signInManager) 
 			: base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
 		{
-			_memberManager = memberManager;
 			_memberModelBuilderFactory = memberModelBuilderFactory;
 			_signInManager = signInManager;
 		}

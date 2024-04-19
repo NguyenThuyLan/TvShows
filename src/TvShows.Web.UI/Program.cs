@@ -1,7 +1,6 @@
 
 using Hangfire;
 using Microsoft.Extensions.Options;
-using System;
 using TvShows.Web.Common.Actions;
 using TvShows.Web.Models;
 using TvShows.Web.Models.Review;
@@ -26,7 +25,6 @@ builder.CreateUmbracoBuilder()
                 .SetNameProperty(p => p.UserName)
                 .ListView(listViewConfig => listViewConfig
                     .AddField(p => p.Email)
-                    .AddField(p => p.Website)
                     .AddField(p=>p.TvShowTitle, fieldConfig =>
                     {
                         fieldConfig.SetHeading("TvShow");
@@ -42,7 +40,7 @@ builder.CreateUmbracoBuilder()
                     .AddTab("General", tabConfig => tabConfig
                         .AddFieldset("General", fieldsetConfig => fieldsetConfig
                             .AddField(p => p.Email).SetValidationRegex("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+")
-                            .AddField(p=>p.Website)
+                            //.AddField(p=>p.Website)
                             .AddField(p=>p.Review)
                             .AddField(p=>p.TvShowKey).SetValidationRegex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
                         )
