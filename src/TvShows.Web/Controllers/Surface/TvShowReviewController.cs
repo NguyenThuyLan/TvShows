@@ -55,8 +55,8 @@ namespace TvShows.Web.Controllers
 
 					TvShowReview tvShowReview = new TvShowReview()
 					{
-						MemberId = currentMember.Key,
-						TvShowKey = CurrentPage?.Key,
+						MemberKeyId = currentMember.Key,
+						TvShowKeyId = CurrentPage?.Key,
 						Email = currentMember?.Email ?? "",
 						UserName = currentMember?.UserName ?? "",
 						Review = review.Message,

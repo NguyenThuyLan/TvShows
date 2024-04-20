@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TvShows.Web.Common.Context;
 
@@ -10,9 +11,11 @@ using TvShows.Web.Common.Context;
 namespace TvShows.Web.Migrations
 {
     [DbContext(typeof(TvShowContext))]
-    partial class TvShowContextModelSnapshot : ModelSnapshot
+    [Migration("20240420143253_addNewColumnToChangeDataType")]
+    partial class addNewColumnToChangeDataType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
@@ -36,6 +39,9 @@ namespace TvShows.Web.Migrations
                     b.Property<bool>("IsApproved")
                         .HasColumnType("INTEGER")
                         .HasColumnName("isApproved");
+
+                    b.Property<Guid?>("MemberId")
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid?>("MemberKeyId")
                         .HasColumnType("uniqueidentifier")

@@ -31,7 +31,7 @@ namespace TvShows.Web.Controllers
             using IEfCoreScope<TvShowContext> scope = _efCoreScopeProvider.CreateScope();
             IEnumerable<TvShowReview> reviews = await scope.ExecuteWithContextAsync(async db =>
             {
-                return db.TvShowReviews.Where(x => x.TvShowKey == umbracoNodeKey).ToArray();
+                return db.TvShowReviews.Where(x => x.TvShowKeyId == umbracoNodeKey).ToArray();
             });
 
             scope.Complete();

@@ -42,7 +42,7 @@ builder.CreateUmbracoBuilder()
                             .AddField(p => p.Email).SetValidationRegex("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+")
                             //.AddField(p=>p.Website)
                             .AddField(p=>p.Review)
-                            .AddField(p=>p.TvShowKey).SetValidationRegex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+                            .AddField(p=>p.TvShowKeyId).SetValidationRegex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
                         )
                         //.AddFieldset("Media", fieldsetConfig => fieldsetConfig
                         //    .AddField(p => p.Avatar).SetDataType("Upload File")
