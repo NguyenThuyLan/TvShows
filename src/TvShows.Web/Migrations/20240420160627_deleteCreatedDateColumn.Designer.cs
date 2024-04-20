@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TvShows.Web.Common.Context;
 
@@ -10,9 +11,11 @@ using TvShows.Web.Common.Context;
 namespace TvShows.Web.Migrations
 {
     [DbContext(typeof(TvShowContext))]
-    partial class TvShowContextModelSnapshot : ModelSnapshot
+    [Migration("20240420160627_deleteCreatedDateColumn")]
+    partial class deleteCreatedDateColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
@@ -23,10 +26,6 @@ namespace TvShows.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER")
                         .HasColumnName("id");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime")
-                        .HasColumnName("createdDate");
 
                     b.Property<string>("Email")
                         .IsRequired()
