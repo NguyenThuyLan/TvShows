@@ -53,13 +53,14 @@ namespace TvShows.Web.Controllers
 						return CurrentUmbracoPage();
 					}
 
-					TvShowReview tvShowReview = new TvShowReview()
+					Review tvShowReview = new Review()
 					{
+						Id = Guid.NewGuid(),
 						MemberKeyId = currentMember.Key,
 						TvShowKeyId = CurrentPage?.Key,
 						Email = currentMember?.Email ?? "",
 						UserName = currentMember?.UserName ?? "",
-						Review = review.Message,
+						Message = review.Message,
 						TvShowTitle = CurrentPage?.Name ?? ""
 					};
 
@@ -67,7 +68,7 @@ namespace TvShows.Web.Controllers
 
 					await scope.ExecuteWithContextAsync<Task>(async db =>
 					{
-						db.TvShowReviews.Add(tvShowReview);
+						db.Reviews.Add(tvShowReview);
 						await db.SaveChangesAsync();
 					});
 					scope.Complete();

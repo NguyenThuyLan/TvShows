@@ -20,7 +20,7 @@ namespace TvShows.Web.Controllers
         public async Task<IActionResult> All()
         {
             using IEfCoreScope<TvShowContext> scope = _efCoreScopeProvider.CreateScope();
-            IEnumerable<TvShowReview> reviews = await scope.ExecuteWithContextAsync(async db => db.TvShowReviews.ToArray());
+            IEnumerable<Review> reviews = await scope.ExecuteWithContextAsync(async db => db.Reviews.ToArray());
             scope.Complete();
             return Ok(reviews);
         }
@@ -29,9 +29,9 @@ namespace TvShows.Web.Controllers
         public async Task<IActionResult> GetReviews(Guid umbracoNodeKey)
         {
             using IEfCoreScope<TvShowContext> scope = _efCoreScopeProvider.CreateScope();
-            IEnumerable<TvShowReview> reviews = await scope.ExecuteWithContextAsync(async db =>
+            IEnumerable<Review> reviews = await scope.ExecuteWithContextAsync(async db =>
             {
-                return db.TvShowReviews.Where(x => x.TvShowKeyId == umbracoNodeKey).ToArray();
+                return db.Reviews.Where(x => x.TvShowKeyId == umbracoNodeKey).ToArray();
             });
 
             scope.Complete();
@@ -39,13 +39,13 @@ namespace TvShows.Web.Controllers
         }
 
         [HttpPost]
-        public async Task InsertReview([FromBody] TvShowReview review)
+        public async Task InsertReview([FromBody] Review review)
         {
             using IEfCoreScope<TvShowContext> scope = _efCoreScopeProvider.CreateScope();
 
             await scope.ExecuteWithContextAsync<Task>(async db =>
             {
-                db.TvShowReviews.Add(review);
+                db.Reviews.Add(review);
                 await db.SaveChangesAsync();
             });
 

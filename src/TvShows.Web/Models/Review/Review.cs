@@ -4,17 +4,17 @@ using Umbraco.Cms.Infrastructure.Persistence.DatabaseAnnotations;
 
 namespace TvShows.Web.Models.Review
 {
-	[TableName("tvShowReviews")]
+	[TableName("reviews")]
 	[PrimaryKey("Id")]
-	public sealed class TvShowReview
+	public sealed class Review
 	{
 		[PrimaryKeyColumn]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int Id { get; set; }
+		public Guid Id { get; set; }
 		public string TvShowTitle { get; set; } = string.Empty;
 		public required string UserName { get; set; }
 		public required string Email { get; set; }
-		public string Review { get; set; } = string.Empty;
+		public string Message { get; set; } = string.Empty;
 		public bool IsApproved { get; set; } = false;
 		public DateTime CreatedDate { get; set; } = DateTime.Now;
 		public Guid? TvShowKeyId { get; set; }

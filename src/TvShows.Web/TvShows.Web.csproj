@@ -14,6 +14,7 @@
       <privateassets>all</privateassets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
     <PackageReference Include="Umbraco.Cms" Version="13.2.2" />
     <PackageReference Include="Umbraco.UIBuilder" Version="13.1.1" />
     <PackageReference Include="Umbraco.UIBuilder.Startup" Version="13.1.1" />

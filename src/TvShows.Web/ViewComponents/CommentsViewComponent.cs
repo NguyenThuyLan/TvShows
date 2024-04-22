@@ -19,13 +19,13 @@ namespace TvShows.Web.ViewComponents
         public IViewComponentResult Invoke(TvShow model)
 		{
 			using IEfCoreScope<TvShowContext> scope = _efCoreScopeProvider.CreateScope();
-			IEnumerable<TvShowReview> reviews = new List<TvShowReview>();
+			IEnumerable<Review> reviews = new List<Review>();
 			IEnumerable<ReviewModel> reviewModels = new List<ReviewModel>();
 			CommentModel comment = new CommentModel();
 
 			scope.ExecuteWithContextAsync<Task>(async db =>
 			{
-				reviews = db.TvShowReviews.Where(x => x.TvShowKeyId == model.Key && x.IsApproved == true).ToArray();
+				reviews = db.Reviews.Where(x => x.TvShowKeyId == model.Key && x.IsApproved == true).ToArray();
 				if(reviews.Any())
 				{
 					comment.Total = reviews.Count();

@@ -17,7 +17,7 @@ builder.CreateUmbracoBuilder()
     {
         cfg.AddSectionAfter("media", "Repositories", sectionConfig => sectionConfig
         .Tree(treeConfig => treeConfig
-            .AddCollection<TvShowReview>(x => x.Id, "TvShowReview", "TvShowReviews", "A person entity", "icon-umb-users", "icon-umb-users", collectionConfig => collectionConfig
+            .AddCollection<Review>(x => x.Id, "TvShowReview", "TvShowReviews", "A person entity", "icon-umb-users", "icon-umb-users", collectionConfig => collectionConfig
                 .AddAction<ApproveTvShowReviewAction>(actionConfig => actionConfig
                     .SetVisibility(x => x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Bulk
                         || x.ActionType == Umbraco.UIBuilder.Configuration.Actions.ActionType.Row)
@@ -25,30 +25,30 @@ builder.CreateUmbracoBuilder()
                 .SetNameProperty(p => p.UserName)
                 .ListView(listViewConfig => listViewConfig
                     .AddField(p => p.Email)
-                    .AddField(p=>p.TvShowTitle, fieldConfig =>
+                    .AddField(p => p.TvShowTitle, fieldConfig =>
                     {
                         fieldConfig.SetHeading("TvShow");
                     })
-                    .AddField(p => p.Review)
-                    .AddField(p=>p.IsApproved, fieldConfig =>
+                    .AddField(p => p.Message)
+                    .AddField(p => p.IsApproved, fieldConfig =>
                     {
                         fieldConfig.SetHeading("Approved");
                     })
-					.AddField(p => p.CreatedDate)
-				)
-                .Editor(editorConfig => editorConfig
-                    .AddTab("General", tabConfig => tabConfig
-                        .AddFieldset("General", fieldsetConfig => fieldsetConfig
-                            .AddField(p => p.Email).SetValidationRegex("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+")
-                            //.AddField(p=>p.Website)
-                            .AddField(p=>p.Review)
-                            .AddField(p=>p.TvShowKeyId).SetValidationRegex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
-                        )
-                        //.AddFieldset("Media", fieldsetConfig => fieldsetConfig
-                        //    .AddField(p => p.Avatar).SetDataType("Upload File")
-                        //)
-                    )
+                    .AddField(p => p.CreatedDate)
                 )
+                //.Editor(editorConfig => editorConfig
+                //    .AddTab("General", tabConfig => tabConfig
+                //        .AddFieldset("General", fieldsetConfig => fieldsetConfig
+                //            .AddField(p => p.Email).SetValidationRegex("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+")
+                //            //.AddField(p=>p.Website)
+                //            .AddField(p => p.Message)
+                //            .AddField(p => p.TvShowKeyId).SetValidationRegex("[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+                //        )
+                //    //.AddFieldset("Media", fieldsetConfig => fieldsetConfig
+                //    //    .AddField(p => p.Avatar).SetDataType("Upload File")
+                //    //)
+                //    )
+                //)
             )
         )
     );

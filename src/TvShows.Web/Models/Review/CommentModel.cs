@@ -4,6 +4,6 @@
 	{
         public int Total { get; set; }
 
-		public IEnumerable<TvShowReview> Reviews { get; set; }
+		public IEnumerable<Review> Reviews { get; set; }
     }
 }
