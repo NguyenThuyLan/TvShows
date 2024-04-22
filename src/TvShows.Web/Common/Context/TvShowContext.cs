@@ -17,10 +17,10 @@ namespace TvShows.Web.Common.Context
                 entity.ToTable("tvShowReviews");
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).HasColumnName("id").ValueGeneratedOnAdd();
-				entity.Property(e => e.TvShowTitle).HasColumnName("tvShowTitle");
-                entity.Property(e => e.UserName).HasColumnName("userName");
-                entity.Property(e => e.Email).HasColumnName("email");
-                entity.Property(e => e.Review).HasColumnName("review");
+				entity.Property(e => e.TvShowTitle).HasColumnType("nvarchar(255)").HasColumnName("tvShowTitle");
+                entity.Property(e => e.UserName).HasColumnType("nvarchar(255)").HasColumnName("userName");
+                entity.Property(e => e.Email).HasColumnType("nvarchar(255)").HasColumnName("email");
+                entity.Property(e => e.Review).HasColumnType("nvarchar(MAX)").HasColumnName("review");
                 entity.Property(e => e.IsApproved).HasColumnName("isApproved");
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime").HasColumnName("createdDate");
 				entity.Property<Guid?>(e => e.TvShowKeyId).HasColumnType("uniqueidentifier").HasColumnName("tvShowKeyId");
