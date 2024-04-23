@@ -38,7 +38,7 @@ namespace TvShows.Web.Common.Context
 				entity.Property(e => e.UserName).HasColumnType("nvarchar(255)").HasColumnName("userName");
 				entity.Property(e => e.Email).HasColumnType("nvarchar(255)").HasColumnName("email");
 				entity.Property(e => e.Message).HasColumnType("nvarchar(MAX)").HasColumnName("message");
-				entity.Property(e => e.IsApproved).HasColumnName("isApproved");
+				entity.Property(e => e.IsApproved).HasColumnType("bit").HasColumnName("isApproved");
 				entity.Property(e => e.CreatedDate).HasColumnType("datetime").HasColumnName("createdDate");
 				entity.Property<Guid?>(e => e.TvShowKeyId).HasColumnType("uniqueidentifier").HasColumnName("tvShowKeyId");
 				entity.Property<Guid?>(e => e.MemberKeyId).HasColumnType("uniqueidentifier").HasColumnName("memberKeyId");

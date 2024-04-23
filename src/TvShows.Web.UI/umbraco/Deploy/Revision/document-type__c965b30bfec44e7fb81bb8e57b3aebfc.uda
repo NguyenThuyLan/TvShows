@@ -2,6 +2,7 @@
   "Name": "Two Column Layout",
   "Alias": "umbBlockGridDemoTwoColumnLayoutBlock",
   "AllowedTemplates": [],
+  "HistoryCleanup": {},
   "Icon": "icon-book-alt color-black",
   "Thumbnail": "folder.png",
   "Permissions": {

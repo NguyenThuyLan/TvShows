@@ -2,6 +2,7 @@
   "Name": "Rich Text",
   "Alias": "umbBlockGridDemoRichTextBlock",
   "AllowedTemplates": [],
+  "HistoryCleanup": {},
   "Icon": "icon-script color-black",
   "Thumbnail": "folder.png",
   "Permissions": {

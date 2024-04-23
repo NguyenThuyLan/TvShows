@@ -2,6 +2,7 @@
   "Name": "Headline",
   "Alias": "umbBlockGridDemoHeadlineBlock",
   "AllowedTemplates": [],
+  "HistoryCleanup": {},
   "Icon": "icon-font color-black",
   "Thumbnail": "folder.png",
   "Permissions": {

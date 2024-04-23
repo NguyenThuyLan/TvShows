@@ -2,6 +2,7 @@
   "Name": "Image",
   "Alias": "umbBlockGridDemoImageBlock",
   "AllowedTemplates": [],
+  "HistoryCleanup": {},
   "Icon": "icon-umb-media color-black",
   "Thumbnail": "folder.png",
   "Permissions": {
