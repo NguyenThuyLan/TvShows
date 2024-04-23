@@ -9,10 +9,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9 col-sm-12 col-xs-12">
-				<p>Your search for <strong>@Model.Query</strong> returned a number of <strong> @Model.TotalResults</strong> result(s) on item types: </p>
-
+				
 				@if (Model.SearchResults != null && Model.SearchResults.Any())
 				{
+					<p>Your search for <strong>@Model.Query</strong> returned a number of <strong> @Model.TotalResults</strong> result(s) on item types: </p>
+
 					@foreach (var item in Model.SearchResults)
 					{
 						<div class="blog-item-style-1 blog-item-style-3">
@@ -24,6 +25,16 @@
 							</div>
 						</div>
 					}
+				}
+				else
+				{
+					<h1 class="small-12 cell" style="color: #f1eaea;">Search</h1>
+					<div class="callout primary">
+						<p>
+							Pardon us, but no shows or people matching your query were found. <br />
+							You can <a href="/request">make a request</a> to add the show you're looking for.
+						</p>
+					</div>
 				}
 			</div>
 

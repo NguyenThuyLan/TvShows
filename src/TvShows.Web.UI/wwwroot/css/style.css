@@ -5849,8 +5849,9 @@ ul {
   padding-left: 25px;
 }
 .page-single {
-  background-color: #020d18;
-  padding: 75px 0;
+    background-color: #020d18;
+    padding: 75px 0;
+    min-height: calc(100% - 807px);
 }
 .social-btn {
   margin-bottom: 40px;

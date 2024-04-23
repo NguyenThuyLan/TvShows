@@ -16,7 +16,8 @@
       "umb://document-type/36fd2a782e644f0b8a6fae3f5397185c",
       "umb://document-type/a562ffd6f22045c6b8920dae2b52af09",
       "umb://document-type/a28cdd9ad4004b4a8d3ad98d59b136c3",
-      "umb://document-type/6e5fc4aa0e7549e0967dffdb87e3575d"
+      "umb://document-type/6e5fc4aa0e7549e0967dffdb87e3575d",
+      "umb://document-type/f24d4227206e4b72b8774aa98fe85e54"
     ]
   },
   "CompositionContentTypes": [],
@@ -80,6 +81,9 @@
     },
     {
       "Udi": "umb://document-type/a84605dcf20f42e5b0db7d09263da230"
+    },
+    {
+      "Udi": "umb://document-type/f24d4227206e4b72b8774aa98fe85e54"
     },
     {
       "Udi": "umb://template/f883f0c2734f42eeb8fac237e1b0daf4",
