@@ -86,7 +86,7 @@ namespace TvShows.Web.Utility
 			return $"Sync complete until page {page}";
 		}
 
-		private bool InsertedOrUpdated(TvShowModel show)
+		public bool InsertedOrUpdated(TvShowModel show)
 		{
 
 			using (var umbracoContextReference = _umbracoContextFactory.EnsureUmbracoContext())
@@ -118,7 +118,7 @@ namespace TvShows.Web.Utility
 					var media = ImportMediaFromTVMazeToUmbraco(show);
 					var newTvShow = _contentService.Create(show.Name, TvshowLibrary.Id, TvShow.ModelTypeAlias);
 					newTvShow.SetValue(nameof(TvShow.TvShowID), show.Id);
-					newTvShow.SetValue(nameof(TvShow.ShowTitle), show.Name);
+					
 					newTvShow.SetValue(nameof(TvShow.Premiered), show.Premiered);
 
 					if (media != null)
@@ -128,10 +128,12 @@ namespace TvShows.Web.Utility
 
 					foreach (var description in Descriptions)
 					{
+						newTvShow.SetValue(nameof(TvShow.ShowTitle), show.Name, description.Key);
+						newTvShow.SetValue(nameof(TvShow.Summary), show.Summary, description.Key);
 						newTvShow.SetCultureName(show.Name, description.Key);
 						//newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Name} {description.Value}", description.Key);
 					}
-					newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Summary}", null);
+					//newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Summary}", null);
 					
 					_contentService.SaveAndPublish(newTvShow);
 					return true;

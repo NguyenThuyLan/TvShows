@@ -1,0 +1,19 @@
+{
+  "Name": "PagingPage",
+  "Alias": "PagingPage",
+  "File": "umb://template-file/PagingPage.cshtml",
+  "Master": "umb://template/a2e6a4f49ecf44ef8ab0284411392fc1",
+  "Udi": "umb://template/297844370a6d4484b8b0af4885dc638d",
+  "Dependencies": [
+    {
+      "Udi": "umb://template-file/PagingPage.cshtml",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/a2e6a4f49ecf44ef8ab0284411392fc1",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.TemplateArtifact",
+  "__version": "13.1.0"
+}

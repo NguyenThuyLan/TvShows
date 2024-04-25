@@ -1,0 +1,19 @@
+{
+  "Name": "CreateRequest",
+  "Alias": "CreateRequest",
+  "File": "umb://template-file/CreateRequest.cshtml",
+  "Master": "umb://template/a2e6a4f49ecf44ef8ab0284411392fc1",
+  "Udi": "umb://template/23930e75065a4fb98657376941321ef8",
+  "Dependencies": [
+    {
+      "Udi": "umb://template-file/CreateRequest.cshtml",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/a2e6a4f49ecf44ef8ab0284411392fc1",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.TemplateArtifact",
+  "__version": "13.1.0"
+}

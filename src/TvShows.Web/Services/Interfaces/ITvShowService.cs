@@ -14,5 +14,7 @@ namespace TvShows.Web.Services.Interfaces
 		void DeleteTvShows();
 
 		IMedia ImportMediaFromTVMazeToUmbraco(TvShowModel tvShow);
+
+		bool InsertedOrUpdated(TvShowModel show);
 	}
 }

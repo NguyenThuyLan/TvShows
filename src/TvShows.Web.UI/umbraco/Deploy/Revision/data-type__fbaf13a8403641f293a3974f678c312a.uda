@@ -1,0 +1,26 @@
+{
+  "Name": "Checkbox list",
+  "Alias": "",
+  "EditorAlias": "Umbraco.CheckBoxList",
+  "DatabaseType": "Nvarchar",
+  "Configuration": {
+    "items": [
+      {
+        "id": 1,
+        "value": "Submitted"
+      },
+      {
+        "id": 2,
+        "value": "Approved"
+      },
+      {
+        "id": 3,
+        "value": "Rejected"
+      }
+    ]
+  },
+  "Udi": "umb://data-type/fbaf13a8403641f293a3974f678c312a",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DataTypeArtifact",
+  "__version": "13.1.0"
+}

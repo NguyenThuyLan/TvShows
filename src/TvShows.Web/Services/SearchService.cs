@@ -1,5 +1,6 @@
 ﻿using Examine;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
 using TvShows.Web.Models;
 using TvShows.Web.Services.Interfaces;
 using Umbraco.Cms.Core;
@@ -63,7 +64,7 @@ namespace TvShows.Web.Services
 			if (_examineManager.TryGetIndex(Constants.UmbracoIndexes.ExternalIndexName, out var index))
 			{
 				var searcher = index.Searcher;
-				var fieldToSearch = "showTitle";// + "_" + CultureInfo.CurrentCulture.ToString().ToLower();
+				var fieldToSearch = "showTitle" + "_" + CultureInfo.CurrentCulture.ToString().ToLower();
 				var criteria = searcher.CreateQuery(IndexTypes.Content);
 				var examineQuery = criteria.Field(fieldToSearch, searchTerm.MultipleCharacterWildcard());
 				var results = examineQuery.Execute();

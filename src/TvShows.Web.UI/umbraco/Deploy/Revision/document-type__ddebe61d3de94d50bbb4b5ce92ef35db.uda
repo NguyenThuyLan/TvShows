@@ -1,0 +1,46 @@
+{
+  "Name": "PagingPage",
+  "Alias": "pagingPage",
+  "DefaultTemplate": "umb://template/297844370a6d4484b8b0af4885dc638d",
+  "AllowedTemplates": [
+    "umb://template/297844370a6d4484b8b0af4885dc638d"
+  ],
+  "HistoryCleanup": {},
+  "Icon": "icon-bar-chart color-black",
+  "Thumbnail": "folder.png",
+  "Permissions": {
+    "AllowVaryingByCulture": true,
+    "AllowedChildContentTypes": []
+  },
+  "CompositionContentTypes": [],
+  "PropertyGroups": [
+    {
+      "Key": "2d22df1a-5353-4664-9d90-2fd8bb38be95",
+      "Name": "Content Table",
+      "Alias": "contentTable",
+      "PropertyTypes": [
+        {
+          "Key": "b89cab27-0fc2-410b-8655-a3440c13d0a5",
+          "Alias": "contentTableType",
+          "DataType": "umb://data-type/bb5f57c9ce2b4bb9b6974caca783a805",
+          "Mandatory": true,
+          "Name": "Content type"
+        }
+      ]
+    }
+  ],
+  "PropertyTypes": [],
+  "Udi": "umb://document-type/ddebe61d3de94d50bbb4b5ce92ef35db",
+  "Dependencies": [
+    {
+      "Udi": "umb://data-type/bb5f57c9ce2b4bb9b6974caca783a805",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://template/297844370a6d4484b8b0af4885dc638d",
+      "Ordering": true
+    }
+  ],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.ContentType.DocumentTypeArtifact",
+  "__version": "13.1.0"
+}

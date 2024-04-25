@@ -1,0 +1,26 @@
+{
+  "Name": "Radiobox",
+  "Alias": "",
+  "EditorAlias": "Umbraco.RadioButtonList",
+  "DatabaseType": "Nvarchar",
+  "Configuration": {
+    "items": [
+      {
+        "id": 1,
+        "value": "Submitted"
+      },
+      {
+        "id": 2,
+        "value": "Approved"
+      },
+      {
+        "id": 3,
+        "value": "Rejected"
+      }
+    ]
+  },
+  "Udi": "umb://data-type/bb5f57c9ce2b4bb9b6974caca783a805",
+  "Dependencies": [],
+  "__type": "Umbraco.Deploy.Infrastructure,Umbraco.Deploy.Infrastructure.Artifacts.DataTypeArtifact",
+  "__version": "13.1.0"
+}

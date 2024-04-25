@@ -1,0 +1,15 @@
+﻿@using TvShows.Web.Models
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<RequestShowModel>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_Basic.cshtml";
+}
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 col-sm-12 col-xs-12">
+			@Model.Name
+		</div>
+
+	</div>
+</div>
