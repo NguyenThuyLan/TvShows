@@ -50,6 +50,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// CreatedByForm
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[ImplementPropertyType("createdByForm")]
+		public virtual bool CreatedByForm => this.Value<bool>(_publishedValueFallback, "createdByForm");
+
+		///<summary>
 		/// PreImage
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
@@ -79,6 +86,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("summary")]
 		public virtual string Summary => this.Value<string>(_publishedValueFallback, "summary");
+
+		///<summary>
+		/// TvShowGuidId
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tvShowGuidId")]
+		public virtual string TvShowGuidId => this.Value<string>(_publishedValueFallback, "tvShowGuidId");
 
 		///<summary>
 		/// TvShowID

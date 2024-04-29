@@ -1,5 +1,5 @@
 ﻿using MailKit;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Net;
@@ -29,9 +29,11 @@ namespace TvShows.Web.Utility
 		private readonly IContentTypeBaseServiceProvider _contentTypeBaseServiceProvider;
 		private readonly ILogger<TvShowService> _logger;
 		private readonly IVariationContextAccessor _variationContextAccessor;
-        private readonly Appsettings _appSettings;
+		private readonly Appsettings _appSettings;
+		private readonly ILocalizationService _localizationService;
+		private readonly IWebHostEnvironment _environment;
 
-        Dictionary<string, string> Descriptions = new() {
+		Dictionary<string, string> Descriptions = new() {
 		{ "en-US", "was a great TV Show" },
 		{ "da", "som et godt tv-program" },
 		{ "vi", "Một TV Show tuyệt vời" }
@@ -46,7 +48,9 @@ namespace TvShows.Web.Utility
 		IContentTypeBaseServiceProvider contentTypeBaseServiceProvider,
 		ILogger<TvShowService> logger,
 		IVariationContextAccessor variationContextAccessor,
-        IOptions<Appsettings> appSettings) 
+		IOptions<Appsettings> appSettings,
+		ILocalizationService localizationService,
+		IWebHostEnvironment environment)
 		{
 			_umbracoContextFactory = umbracoContextFactory;
 			_contentService = contentService;
@@ -57,8 +61,10 @@ namespace TvShows.Web.Utility
 			_contentTypeBaseServiceProvider = contentTypeBaseServiceProvider;
 			_logger = logger;
 			_variationContextAccessor = variationContextAccessor;
-            _appSettings = appSettings.Value;
-        }
+			_appSettings = appSettings.Value;
+			_localizationService = localizationService;
+			_environment = environment;
+		}
 
 		public string MoveTvShowsFromTvMazeToUmbraco()
 		{
@@ -118,7 +124,7 @@ namespace TvShows.Web.Utility
 					var media = ImportMediaFromTVMazeToUmbraco(show);
 					var newTvShow = _contentService.Create(show.Name, TvshowLibrary.Id, TvShow.ModelTypeAlias);
 					newTvShow.SetValue(nameof(TvShow.TvShowID), show.Id);
-					
+
 					newTvShow.SetValue(nameof(TvShow.Premiered), show.Premiered);
 
 					if (media != null)
@@ -134,7 +140,7 @@ namespace TvShows.Web.Utility
 						//newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Name} {description.Value}", description.Key);
 					}
 					//newTvShow.SetValue(nameof(TvShow.Summary), $"{show.Summary}", null);
-					
+
 					_contentService.SaveAndPublish(newTvShow);
 					return true;
 				}
@@ -144,7 +150,7 @@ namespace TvShows.Web.Utility
 		public IMedia ImportMediaFromTVMazeToUmbraco(TvShowModel tvShow)
 		{
 
-            if (tvShow == null || string.IsNullOrEmpty(tvShow.Name) || string.IsNullOrEmpty(tvShow.Image?.Original))
+			if (tvShow == null || string.IsNullOrEmpty(tvShow.Name) || string.IsNullOrEmpty(tvShow.Image?.Original))
 			{
 				return null;
 			}
@@ -186,7 +192,6 @@ namespace TvShows.Web.Utility
 			return parentFolder;
 		}
 
-
 		private string GetFileNameFromUrl(string url)
 		{
 			// Get the last part of the URL after the last slash '/'
@@ -207,7 +212,7 @@ namespace TvShows.Web.Utility
 			return false;
 		}
 
-		public void DeleteTvShows()
+		public void DeleteAllTvShows()
 		{
 			try
 			{
@@ -240,7 +245,104 @@ namespace TvShows.Web.Utility
 			{
 				_logger.LogError(ex, $"DeleteTvShows: {ex.Message}");
 			}
-			
+
+		}
+
+		public bool SaveTvShow(ShowModel show, string currentCulture)
+		{
+			if (show == null)
+			{
+				_logger.LogError($"{nameof(SaveTvShow)} : parameter is null");
+				return false;
+			}
+
+			try
+			{
+				using (var umbracoContextReference = _umbracoContextFactory.EnsureUmbracoContext())
+				{
+					var tvshowLibrary = umbracoContextReference?.UmbracoContext?.Content?.GetById(_contentService.GetByLevel(2)
+						.ToList().Where(s => s.ContentType.Alias == TvShowsLibrary.ModelTypeAlias).First().Id) as TvShowsLibrary;
+					if (tvshowLibrary == null)
+					{
+						_logger.LogWarning("CreateNewTvShow: Can not find TvShowsLibrary");
+						return false;
+					}
+					else
+					{
+						var existingTvShowInUmbraco = tvshowLibrary.Children<TvShow>(_variationContextAccessor).ToList()
+						.Where(t => t.TvShowGuidId == show.TvShowGuidId.ToString() && show.CreatedByForm).FirstOrDefault();
+
+						if (existingTvShowInUmbraco == null)
+						{
+							var langugages = _localizationService.GetAllLanguages();
+							var newTvShow = _contentService.Create(show.ShowTitle, tvshowLibrary.Id, TvShow.ModelTypeAlias);
+							if (!string.IsNullOrEmpty(show.PreImage))
+							{
+								var strArray = show.PreImage.Split("/");
+								var fileName = strArray[strArray.Length - 1];
+
+								var existingFolder = GetMediaFolderFromUmbraco(show.ShowTitle);
+								string wwwrootPath = _environment.WebRootPath;
+
+								string fullPath = Path.Combine(wwwrootPath, show.PreImage);
+								Uri uri = new Uri(wwwrootPath + show.PreImage);
+								string test = uri.AbsolutePath;
+								System.Drawing.Image image = System.Drawing.Image.FromFile(test);
+								var stream = new MemoryStream();
+
+								image.Save(stream, image.RawFormat);
+								stream.Position = 0;
+								//Import Media
+								IMedia media = _mediaService.CreateMedia(fileName, existingFolder.Id, Constants.Conventions.MediaTypes.Image);
+								media.SetValue(_mediaFileManager, _mediaUrlGeneratorCollection, _shortStringHelper, _contentTypeBaseServiceProvider, Constants.Conventions.Media.File, fileName, stream);
+								try
+								{
+									_mediaService.Save(media);
+								}
+								catch (Exception ex)
+								{
+									_logger.LogError(ex, fileName);
+								}
+								if (media != null)
+								{
+									newTvShow.SetValue(nameof(TvShow.PreImage), media.GetUdi());
+								}
+							}
+							newTvShow.SetValue(nameof(TvShow.TvShowID), show.TvShowID);
+							newTvShow.SetValue(nameof(TvShow.TvShowGuidId), show.TvShowGuidId);
+							newTvShow.SetValue(nameof(TvShow.CreatedByForm), show.CreatedByForm);
+							newTvShow.SetValue(nameof(TvShow.Premiered), show.Premiered);
+							newTvShow.SetValue(nameof(TvShow.ShowTitle), show.ShowTitle, currentCulture);
+							newTvShow.SetValue(nameof(TvShow.Summary), show.Summary, currentCulture);
+							newTvShow.SetCultureName(show.ShowTitle, currentCulture);
+
+							_contentService.Save(newTvShow);
+						}
+						else
+						{
+							var existTvShow = _contentService.GetById(existingTvShowInUmbraco.Id);
+							existTvShow.SetValue(nameof(TvShow.ShowTitle), show.ShowTitle, currentCulture);
+							existTvShow.SetValue(nameof(TvShow.Premiered), show.Premiered, currentCulture);
+							existTvShow.SetValue(nameof(TvShow.Summary), show.Summary, currentCulture);
+							existTvShow.SetCultureName(show.ShowTitle, currentCulture);
+							_contentService.Save(existTvShow);
+						}
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError($"SaveTvShow: {ex.Message}");
+				return false;
+			}
+
+			return true;
+		}
+
+		public bool DeleteTvShow(Guid Id)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

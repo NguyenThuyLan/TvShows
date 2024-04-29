@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TvShows.Web.Models;
+﻿using TvShows.Web.Models;
 using Umbraco.Cms.Core.Models;
 
 namespace TvShows.Web.Services.Interfaces
@@ -11,10 +6,10 @@ namespace TvShows.Web.Services.Interfaces
 	public interface ITvShowService
 	{
 		string MoveTvShowsFromTvMazeToUmbraco();
-		void DeleteTvShows();
-
+		void DeleteAllTvShows();
 		IMedia ImportMediaFromTVMazeToUmbraco(TvShowModel tvShow);
-
 		bool InsertedOrUpdated(TvShowModel show);
+		bool SaveTvShow(ShowModel show, string currentCulture);
+		bool DeleteTvShow(Guid Id);
 	}
 }

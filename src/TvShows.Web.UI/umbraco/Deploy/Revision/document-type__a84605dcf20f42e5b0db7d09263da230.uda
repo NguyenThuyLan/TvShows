@@ -23,7 +23,8 @@
           "Key": "5dcf02c5-3687-4091-8d44-15700a1e3891",
           "Alias": "gridContent",
           "DataType": "umb://data-type/7654eec384f9472eba33fbce90fbb9d4",
-          "Name": "Content"
+          "Name": "Content",
+          "VariesByCulture": true
         }
       ]
     }

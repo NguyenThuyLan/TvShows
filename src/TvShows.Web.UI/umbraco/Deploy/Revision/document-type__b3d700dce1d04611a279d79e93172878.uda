@@ -49,6 +49,22 @@
           "SortOrder": 1
         },
         {
+          "Key": "bc815d43-e1a6-4f1c-bcfa-1fbf82d8697f",
+          "Alias": "createdByForm",
+          "DataType": "umb://data-type/92897bc6a5f34ffeae27f2e7e33dda49",
+          "Name": "CreatedByForm",
+          "SortOrder": 6
+        },
+        {
+          "Key": "d6998a43-c1bb-49e2-8579-cb51fcd0c3b8",
+          "Alias": "tvShowGuidId",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "TvShowGuidId",
+          "SortOrder": 5,
+          "Validation": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+          "ValidationMessage": "This field is required guid value"
+        },
+        {
           "Key": "e0b44c6d-770f-4688-9832-a6906940be48",
           "Alias": "showTitle",
           "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
@@ -67,6 +83,10 @@
     },
     {
       "Udi": "umb://data-type/406653625ea34b329dda28bb3c430de9",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/92897bc6a5f34ffeae27f2e7e33dda49",
       "Ordering": true
     },
     {

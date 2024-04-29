@@ -22,7 +22,7 @@ namespace TvShows.Web.Controllers
         [HttpDelete]
         public void DeleteTvShows()
         {
-            _tvShowService.DeleteTvShows();
+            _tvShowService.DeleteAllTvShows();
         }
     }
 }

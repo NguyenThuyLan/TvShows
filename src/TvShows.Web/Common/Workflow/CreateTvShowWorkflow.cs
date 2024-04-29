@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Serilog.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using TvShows.Web.Models;
 using TvShows.Web.Services.Interfaces;
 using Umbraco.Forms.Core;
@@ -22,7 +17,7 @@ namespace TvShows.Web.Common.Workflow
 			ITvShowService tvShowService)
 		{
 			_logger = logger;
-			_tvShowService= tvShowService;
+			_tvShowService = tvShowService;
 
 			this.Id = new Guid("ccbeb0d5-adaa-4729-8b4c-4bb439dc0202");
 			this.Name = "CreateTvShowWorkflow";
@@ -32,7 +27,10 @@ namespace TvShows.Web.Common.Workflow
 		}
 		public override Task<WorkflowExecutionStatus> ExecuteAsync(WorkflowExecutionContext context)
 		{
-			var tvShowModel = new TvShowModel();
+			var currentCulture = CultureInfo.CurrentCulture.ToString();
+			var tvShowModel = new ShowModel();
+			tvShowModel.CreatedByForm = true;
+			tvShowModel.TvShowGuidId = context.Record.UniqueId;
 			// we can then iterate through the fields
 			foreach (RecordField rf in context.Record.RecordFields.Values)
 			{
@@ -42,7 +40,7 @@ namespace TvShows.Web.Common.Workflow
 				switch (rf.Alias)
 				{
 					case "name":
-						tvShowModel.Name = val.ToString();
+						tvShowModel.ShowTitle = val.ToString();
 						break;
 					case "description":
 						tvShowModel.Summary = val.ToString();
@@ -50,10 +48,13 @@ namespace TvShows.Web.Common.Workflow
 					case "premiered":
 						tvShowModel.Premiered = (DateTime)val;
 						break;
+					case "preImage":
+						tvShowModel.PreImage = val.ToString();
+						break;
 
 				}
 			}
-			_tvShowService.InsertedOrUpdated(tvShowModel);
+			_tvShowService.SaveTvShow(tvShowModel, currentCulture);
 
 			return Task.FromResult(WorkflowExecutionStatus.Completed);
 		}
