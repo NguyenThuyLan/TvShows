@@ -20,7 +20,9 @@ namespace TvShows.Web.Composer
 				options.UseUmbracoDatabaseProvider(serviceProvider);
 			});
 			builder.WithCollectionBuilder<WorkflowCollectionBuilder>()
-				.Add<CreateTvShowWorkflow>();
+				.Add<CreateTvShowWorkflow>()
+				.Add<DeleteAnEntryWorkflow>();
+				
 		}
 	}
 }
