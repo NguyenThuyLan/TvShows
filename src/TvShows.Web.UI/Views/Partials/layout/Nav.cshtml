@@ -3,13 +3,13 @@
 	var root = Model.Root();
 	var signUp = Model.Root().Children().Where(x => x.ContentType.Alias == AuthenticationPage.ModelTypeAlias).First();
 	var login = Model.Root().Children().Where(x => x.ContentType.Alias == Login.ModelTypeAlias).First();
-	var isLoggedIn = Context.User?.Identity.IsAuthenticated ?? false;
+	var isLoggedIn = Context.User?.Identity?.IsAuthenticated ?? false;
 }
 
 <nav class="navbar navbar-default navbar-custom">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header logo">
-		<a class="logo-tvshow" href="/">@root.Value("siteName")</a>
+		<a class="logo-tvshow" href="@root.Url()">@root.Value("siteName")</a>
 	</div>
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -37,7 +37,7 @@
 						{
 							url = Model.Root().Url(culture);
 						}
-						if (culture != Model.GetCultureFromDomains().ToLower())
+						if (culture != Model.GetCultureFromDomains()?.ToLower())
 						{
 							<a class="nav-link" href="@url">@Umbraco.GetDictionaryValue($"{culture}")</a>
 						}
@@ -48,7 +48,7 @@
 			@if (isLoggedIn)
 			{
 				<li class="loginLink"><a href="@(Url.SurfaceAction("Logout", "Login"))">@root.Value("logoutTitle")</a></li>
-				<li class="loginLink"><span class="userName">@root.Value("helloUser") @Context.User?.Identity.GetUserName()</span></li>
+				<li class="loginLink"><span class="userName">@root.Value("helloUser") @Context.User?.Identity?.GetUserName()</span></li>
 			}
 			else
 			{

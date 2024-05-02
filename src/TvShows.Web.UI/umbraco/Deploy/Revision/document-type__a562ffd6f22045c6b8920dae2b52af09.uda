@@ -32,6 +32,13 @@
           "VariesByCulture": true
         },
         {
+          "Key": "c810b76d-1679-43f5-abac-e348c213d3f2",
+          "Alias": "searchIcon",
+          "DataType": "umb://data-type/ad9f0cf2bda245d59ea1a63cfc873fd3",
+          "Name": "SearchIcon",
+          "SortOrder": 2
+        },
+        {
           "Key": "dde71c88-a586-442f-a323-6fd4dbc3b5e8",
           "Alias": "searchPlacehoder",
           "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
@@ -66,6 +73,10 @@
     },
     {
       "Udi": "umb://data-type/92897bc6a5f34ffeae27f2e7e33dda49",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/ad9f0cf2bda245d59ea1a63cfc873fd3",
       "Ordering": true
     },
     {

@@ -3,4 +3,16 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "_Layout.cshtml";
+	var root = Model.Root();
 }
+
+<div class="container">
+	<div class="row home-page">
+		<h2>@Model.IntroductionTitle</h2>
+		<p>
+			<a href="@Model.FirstChild()?.Url()"><strong>@Model.SiteName</strong></a> @Model.Introduction
+		</p>
+
+		<div class="wrap-btn-start"><a class="get-start-btn" href="@Model.FirstChild()?.Url()">@Model.GetStarted >></a></div>
+	</div>
+</div>

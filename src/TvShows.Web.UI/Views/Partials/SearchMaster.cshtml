@@ -5,13 +5,14 @@
 
 @{
     IPublishedContent searchPage = Model.Root().FirstChild<SearchPage>();
+	var search = searchPage as SearchPage;
 }
 
 @if(searchPage != null)
 {
 	<form action="@searchPage.Url()">
 		<div class="top-search">
-			<input type="text" name="query" placeholder="@Model.Root().Value("placeholderSearch")">
+			<input type="text" name="query" placeholder="@Model.Root().Value("placeholderSearch")" style="background: url(@search.SearchIcon.Url()) no-repeat right 20px center;">
 		</div>
 	</form>
 }

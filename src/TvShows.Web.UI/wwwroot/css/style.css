@@ -5627,7 +5627,7 @@ ul {
   font-size: 36px;
   color: #ffffff;
   font-weight: 700;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-bottom: 20px;
 }
 .hero ul.breadcumb {
@@ -7944,7 +7944,7 @@ header .top-search select {
   -webkit-appearance: none;
   -moz-appearance: none;
   /* Firefox */
-  background: url('../images/uploads/drop-icon.png') no-repeat right 20px center;
+  /*background: url('../images/uploads/drop-icon.png') no-repeat right 20px center;*/
   text-transform: uppercase;
   color: #ffffff;
 }
@@ -7952,7 +7952,7 @@ header .top-search input::-webkit-input-placeholder {
   color: #abb7c4;
 }
 header .top-search input {
-  background: url('../images/uploads/topsearch.png') no-repeat right 20px center;
+  /*background: url('../images/uploads/topsearch.png') no-repeat right 20px center;*/
 }
 header #nav-icon1 {
   width: 15px;
@@ -8179,12 +8179,12 @@ footer .flex-parent-ft .flex-child-ft p a {
   font-size: 18px;
 }
 footer .flex-parent-ft .flex-child-ft h4 {
-  font-family: 'Dosis', sans-serif;
-  font-size: 18px;
-  color: #ffffff;
-  font-weight: bold;
-  text-transform: capitalize;
-  margin-bottom: 30px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 18px;
+    color: #101010;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 30px;
 }
 footer .flex-parent-ft .flex-child-ft ul {
   list-style: none;
@@ -8324,4 +8324,17 @@ footer.full-width-ft .ft-copyright {
     color: #abb7c4;
     font-weight: bold;
     text-transform: uppercase;
+}
+.home-page{
+    color:aliceblue;
+}
+.get-start-btn {
+    color: aliceblue;
+    background-color: #dd003f;
+    border-radius: 20px;
+    padding: 11px 25px;
+}
+.wrap-btn-start {
+    margin: auto;
+    width: 155px;
 }

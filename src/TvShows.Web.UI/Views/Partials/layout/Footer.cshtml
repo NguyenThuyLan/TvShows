@@ -1,6 +1,8 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
 	var root = Model.Root();
+	var rootPage = root as HomePage;
+	var signUp = Model.Root().Children().Where(x => x.ContentType.Alias == AuthenticationPage.ModelTypeAlias).First();
 }
 <footer class="ht-footer">
 	<div class="container">
@@ -8,52 +10,31 @@
 			<div class="flex-child-ft item1">
 				<a href="index-2.html"><img class="logo" src="images/logo1.png" alt=""></a>
 				<p>
-					5th Avenue st, manhattan<br>
-					New York, NY 10001
+					@rootPage.Address
 				</p>
-				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
+				<p>@rootPage.PhoneNumber</p>
 			</div>
 			<div class="flex-child-ft item2">
-				<h4>Resources</h4>
-				<ul>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Blockbuster</a></li>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Forums</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Help Center</a></li>
-				</ul>
+				@rootPage.ResourceFooter
 			</div>
 			<div class="flex-child-ft item3">
-				<h4>Legal</h4>
-				<ul>
-					<li><a href="#">Terms of Use</a></li>
-					<li><a href="#">Privacy Policy</a></li>
-					<li><a href="#">Security</a></li>
-				</ul>
+				@rootPage.LegalFooter
 			</div>
 			<div class="flex-child-ft item4">
-				<h4>Account</h4>
-				<ul>
-					<li><a href="#">My Account</a></li>
-					<li><a href="#">Watchlist</a></li>
-					<li><a href="#">Collections</a></li>
-					<li><a href="#">User Guide</a></li>
-				</ul>
+				@rootPage.AccountFooter
 			</div>
 			<div class="flex-child-ft item5">
-				<h4>Newsletter</h4>
-				<p>Subscribe to our newsletter system now <br> to get latest news from us.</p>
-				<form action="#">
+				@rootPage.Newsletter
+				@* <form action="#">
 					<input type="text" placeholder="Enter your email...">
-				</form>
-				<a href="#" class="btn">Subscribe now <i class="ion-ios-arrow-forward"></i></a>
+				</form> *@
+				<a href="@signUp.Url()" class="btn">@rootPage.SubscribeBtn <i class="ion-ios-arrow-forward"></i></a>
 			</div>
 		</div>
 	</div>
 	<div class="ft-copyright">
 		<div class="ft-left">
-			<p><a class="logo-tvshow" target="_blank" href="/">@root.Value("siteName")</a></p>
+			<p><a class="logo-tvshow" target="_blank" href="@root.Url()">@root.Value("siteName")</a></p>
 		</div>
 		<div class="backtotop">
 			<p><a href="#" id="back-to-top">Back to top  <i class="ion-ios-arrow-thin-up"></i></a></p>

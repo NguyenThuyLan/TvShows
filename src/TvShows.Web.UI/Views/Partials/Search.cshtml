@@ -3,6 +3,7 @@
 @inject IContentTypeService ContentTypeService
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
+	var root = Model.Root();
 	IPublishedContent searchPage = Model.Root().FirstChild<SearchPage>();
 	var search = searchPage as SearchPage;
 }
@@ -12,7 +13,7 @@
 	<form action="@searchPage.Url()">
 		<div class="sb-search sb-it">
 			<h4 class="sb-title">@search.SearchTitle</h4>
-			<input type="text" placeholder="@search.SearchPlacehoder" name="query">
+			<input type="text" placeholder="@search.SearchPlacehoder" name="query" style="background: url(@search.SearchIcon.Url()) no-repeat right 20px center;">
 		</div>
 	</form>
 }

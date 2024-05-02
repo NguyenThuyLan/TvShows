@@ -23,6 +23,101 @@
   "CompositionContentTypes": [],
   "PropertyGroups": [
     {
+      "Key": "5f35c2fa-e394-42e5-9ff4-f58357aabf50",
+      "Name": "Content",
+      "SortOrder": 1,
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "1faa6e9d-54e7-4f2f-84d2-3e862909d614",
+          "Alias": "getStarted",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Description": "This is name of button: Get Started",
+          "Name": "GetStarted",
+          "SortOrder": 2,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "51b3b64f-0095-47d9-a644-7b9e72ddfa74",
+          "Alias": "introductionTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "IntroductionTitle",
+          "VariesByCulture": true
+        },
+        {
+          "Key": "87eefa0c-f090-4628-97a5-f70a2778ce4f",
+          "Alias": "introduction",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "Introduction",
+          "SortOrder": 1,
+          "VariesByCulture": true
+        }
+      ]
+    },
+    {
+      "Key": "b3b7da76-db52-4bbc-b047-1840cc1127ed",
+      "Name": "Footer",
+      "SortOrder": 2,
+      "Alias": "footer",
+      "PropertyTypes": [
+        {
+          "Key": "00ca5234-1d2a-433f-933e-2bff20035cad",
+          "Alias": "subscribeBtn",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "SubscribeBtn",
+          "SortOrder": 8,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "183eeb10-5dee-4744-a215-00c1dfc69e51",
+          "Alias": "phoneNumber",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "PhoneNumber",
+          "SortOrder": 1,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "256d4566-f472-494a-a0d4-1f50e503a432",
+          "Alias": "legalFooter",
+          "DataType": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
+          "Name": "LegalFooter",
+          "SortOrder": 5,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "5841a031-27d9-47cd-9796-4d1e897afd03",
+          "Alias": "newsletter",
+          "DataType": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
+          "Name": "Newsletter",
+          "SortOrder": 7,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "d70880e5-5bdd-453e-96ac-66434b129a42",
+          "Alias": "accountFooter",
+          "DataType": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
+          "Name": "AccountFooter",
+          "SortOrder": 6,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "e4abd7e7-d33c-46de-af22-2c4155686b25",
+          "Alias": "resourceFooter",
+          "DataType": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
+          "Name": "ResourceFooter",
+          "SortOrder": 3,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "fd21ac01-7a81-4dfa-8637-1a7c357d0b3a",
+          "Alias": "address",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "Address",
+          "VariesByCulture": true
+        }
+      ]
+    },
+    {
       "Key": "d5363386-0ecb-4ce6-85c7-16d3e1db0590",
       "Name": "Header",
       "Alias": "header",
@@ -65,6 +160,10 @@
   "Dependencies": [
     {
       "Udi": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+      "Ordering": true
+    },
+    {
+      "Udi": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
       "Ordering": true
     },
     {
