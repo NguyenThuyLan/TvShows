@@ -50,6 +50,30 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// Createbtn
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("createbtn")]
+		public virtual string Createbtn => this.Value<string>(_publishedValueFallback, "createbtn");
+
+		///<summary>
+		/// NoResultNote
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("noResultNote")]
+		public virtual string NoResultNote => this.Value<string>(_publishedValueFallback, "noResultNote");
+
+		///<summary>
+		/// ResultTitle
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("resultTitle")]
+		public virtual string ResultTitle => this.Value<string>(_publishedValueFallback, "resultTitle");
+
+		///<summary>
 		/// SearchIcon
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]

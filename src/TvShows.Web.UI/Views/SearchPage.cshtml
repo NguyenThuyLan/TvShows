@@ -4,6 +4,7 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	var requestPage = Model.Root().Children().Where(x=>x.ContentType.Alias == Request.ModelTypeAlias).First();
+	var searchPage = Model.Root().Children().Where(x => x.ContentType.Alias == SearchPage.ModelTypeAlias).First() as SearchPage;
 	Layout = "_Layout.cshtml";
 }
 <div class="page-single">
@@ -29,11 +30,11 @@
 				}
 				else
 				{
-					<h1 class="small-12 cell" style="color: #f1eaea;">Search</h1>
+					<h1 class="small-12 cell" style="color: #f1eaea;">@searchPage.ResultTitle</h1>
 					<div class="callout primary">
 						<p>
-							Pardon us, but no shows or people matching your query were found. <br />
-							You can <a href="@requestPage?.Url()">make a request</a> to add the show you're looking for.
+							@Html.Raw(searchPage.NoResultNote)
+							<a href="@requestPage?.Url()">@searchPage.Createbtn</a>
 						</p>
 					</div>
 				}

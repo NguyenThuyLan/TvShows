@@ -25,10 +25,34 @@
       "Alias": "content",
       "PropertyTypes": [
         {
+          "Key": "10d98519-35e3-4f01-94c9-b67217d307d4",
+          "Alias": "resultTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "ResultTitle",
+          "SortOrder": 3,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "13c1475b-dfba-4a15-bda3-42170627ae63",
+          "Alias": "noResultNote",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "NoResultNote",
+          "SortOrder": 4,
+          "VariesByCulture": true
+        },
+        {
           "Key": "194d892c-c861-43fd-b931-cee84e071bfc",
           "Alias": "searchTitle",
           "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
           "Name": "SearchTitle",
+          "VariesByCulture": true
+        },
+        {
+          "Key": "6ae8d9cb-9566-499a-9e82-51a20133f9f0",
+          "Alias": "createbtn",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "Createbtn",
+          "SortOrder": 5,
           "VariesByCulture": true
         },
         {

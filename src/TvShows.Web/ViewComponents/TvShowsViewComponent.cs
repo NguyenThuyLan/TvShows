@@ -45,7 +45,7 @@ namespace TvShows.Web.ViewComponents
 							var tvshow = new TvShowsView()
 							{
 								Id = child.Id,
-								Name = child.Name,
+								Name = child.ShowTitle,
 								Summary = child.Summary,
 								Premiered = child.Premiered,
 								Image = child.PreImage,
