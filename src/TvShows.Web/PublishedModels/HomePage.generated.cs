@@ -66,6 +66,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string Address => this.Value<string>(_publishedValueFallback, "address");
 
 		///<summary>
+		/// CategoryTitle
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("categoryTitle")]
+		public virtual string CategoryTitle => this.Value<string>(_publishedValueFallback, "categoryTitle");
+
+		///<summary>
 		/// GetStarted: This is name of button: Get Started
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
@@ -104,6 +112,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("legalFooter")]
 		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString LegalFooter => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "legalFooter");
+
+		///<summary>
+		/// ListPopular
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("listPopular")]
+		public virtual string ListPopular => this.Value<string>(_publishedValueFallback, "listPopular");
 
 		///<summary>
 		/// LogoutTitle
@@ -160,5 +176,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("subscribeBtn")]
 		public virtual string SubscribeBtn => this.Value<string>(_publishedValueFallback, "subscribeBtn");
+
+		///<summary>
+		/// TagTitle
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("tagTitle")]
+		public virtual string TagTitle => this.Value<string>(_publishedValueFallback, "tagTitle");
 	}
 }

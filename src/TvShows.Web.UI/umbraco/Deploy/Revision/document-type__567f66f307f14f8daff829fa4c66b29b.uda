@@ -23,6 +23,37 @@
   "CompositionContentTypes": [],
   "PropertyGroups": [
     {
+      "Key": "13c1ddac-c8ec-4a95-9555-5fdf3dc72275",
+      "Name": "Sidebar",
+      "SortOrder": 3,
+      "Alias": "sidebar",
+      "PropertyTypes": [
+        {
+          "Key": "79c6f591-1dcc-4619-8a4a-9d6a9dcd2d5e",
+          "Alias": "tagTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "TagTitle",
+          "SortOrder": 2,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "b2b09dff-1e31-4717-8fb6-d64dfadb8e4c",
+          "Alias": "categoryTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "CategoryTitle",
+          "VariesByCulture": true
+        },
+        {
+          "Key": "d23ebd0b-387b-468d-89a7-528b4e322a73",
+          "Alias": "listPopular",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "ListPopular",
+          "SortOrder": 1,
+          "VariesByCulture": true
+        }
+      ]
+    },
+    {
       "Key": "5f35c2fa-e394-42e5-9ff4-f58357aabf50",
       "Name": "Content",
       "SortOrder": 1,
