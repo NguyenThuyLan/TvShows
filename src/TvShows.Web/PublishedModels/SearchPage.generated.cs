@@ -90,6 +90,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string SearchPlacehoder => this.Value<string>(_publishedValueFallback, "searchPlacehoder");
 
 		///<summary>
+		/// SearchResult
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("searchResult")]
+		public virtual string SearchResult => this.Value<string>(_publishedValueFallback, "searchResult");
+
+		///<summary>
 		/// SearchTitle
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]

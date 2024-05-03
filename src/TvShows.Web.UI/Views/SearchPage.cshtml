@@ -13,14 +13,14 @@
 
 			@if (Model.SearchResults != null && Model.SearchResults.Any())
 			{
-				<p>Your search for <strong>@Model.Query</strong> returned a number of <strong> @Model.TotalResults</strong> result(s) on item types: </p>
+				<p>@Html.Raw(string.Format(searchPage.SearchResult, Model.Query, Model.TotalResults))</p>
 
 				@foreach (var item in Model.SearchResults)
 				{
 					<div class="blog-item-style-1 blog-item-style-3">
 						<img src="@item.PublishedItem?.PreImage.LocalCrops.Src" alt="">
 						<div class="blog-it-infor">
-							<h3><a href="@item.PublishedItem.Url()">@item.PublishedItem.Name</a></h3>
+							<h3><a href="@item.PublishedItem.Url()">@item.PublishedItem.ShowTitle</a></h3>
 							<span class="time">@item.PublishedItem.Premiered</span>
 							<p>@Html.Raw(item.PublishedItem.Summary)</p>
 						</div>

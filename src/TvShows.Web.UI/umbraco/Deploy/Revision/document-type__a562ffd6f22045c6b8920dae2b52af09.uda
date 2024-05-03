@@ -56,6 +56,14 @@
           "VariesByCulture": true
         },
         {
+          "Key": "ac303b3f-a1bc-43c5-8dbc-7fcfc8ef13b3",
+          "Alias": "searchResult",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "SearchResult",
+          "SortOrder": 6,
+          "VariesByCulture": true
+        },
+        {
           "Key": "c810b76d-1679-43f5-abac-e348c213d3f2",
           "Alias": "searchIcon",
           "DataType": "umb://data-type/ad9f0cf2bda245d59ea1a63cfc873fd3",
