@@ -7,43 +7,41 @@
 	var searchPage = Model.Root().Children().Where(x => x.ContentType.Alias == SearchPage.ModelTypeAlias).First() as SearchPage;
 	Layout = "_Layout.cshtml";
 }
-<div class="page-single">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-9 col-sm-12 col-xs-12">
-				
-				@if (Model.SearchResults != null && Model.SearchResults.Any())
-				{
-					<p>Your search for <strong>@Model.Query</strong> returned a number of <strong> @Model.TotalResults</strong> result(s) on item types: </p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 col-sm-12 col-xs-12">
 
-					@foreach (var item in Model.SearchResults)
-					{
-						<div class="blog-item-style-1 blog-item-style-3">
-							<img src="@item.PublishedItem?.PreImage.LocalCrops.Src" alt="">
-							<div class="blog-it-infor">
-								<h3><a href="@item.PublishedItem.Url()">@item.PublishedItem.Name</a></h3>
-								<span class="time">@item.PublishedItem.Premiered</span>
-								<p>@Html.Raw(item.PublishedItem.Summary)</p>
-							</div>
-						</div>
-					}
-				}
-				else
+			@if (Model.SearchResults != null && Model.SearchResults.Any())
+			{
+				<p>Your search for <strong>@Model.Query</strong> returned a number of <strong> @Model.TotalResults</strong> result(s) on item types: </p>
+
+				@foreach (var item in Model.SearchResults)
 				{
-					<h1 class="small-12 cell" style="color: #f1eaea;">@searchPage.ResultTitle</h1>
-					<div class="callout primary">
-						<p>
-							@Html.Raw(searchPage.NoResultNote)
-							<a href="@requestPage?.Url()">@searchPage.Createbtn</a>
-						</p>
+					<div class="blog-item-style-1 blog-item-style-3">
+						<img src="@item.PublishedItem?.PreImage.LocalCrops.Src" alt="">
+						<div class="blog-it-infor">
+							<h3><a href="@item.PublishedItem.Url()">@item.PublishedItem.Name</a></h3>
+							<span class="time">@item.PublishedItem.Premiered</span>
+							<p>@Html.Raw(item.PublishedItem.Summary)</p>
+						</div>
 					</div>
 				}
-			</div>
-
-			<div class="col-md-3 col-sm-12 col-xs-12">
-				<div class="sidebar">
-					@await Html.PartialAsync("layout/SideBar")
+			}
+			else
+			{
+				<h1 class="small-12 cell" style="color: #f1eaea;">@searchPage.ResultTitle</h1>
+				<div class="callout primary">
+					<p>
+						@Html.Raw(searchPage.NoResultNote)
+						<a href="@requestPage?.Url()">@searchPage.Createbtn</a>
+					</p>
 				</div>
+			}
+		</div>
+
+		<div class="col-md-3 col-sm-12 col-xs-12">
+			<div class="sidebar">
+				@await Html.PartialAsync("layout/SideBar")
 			</div>
 		</div>
 	</div>

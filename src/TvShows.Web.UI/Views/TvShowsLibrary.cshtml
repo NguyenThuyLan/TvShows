@@ -9,19 +9,17 @@
 	var stringQuery = Context?.Request?.Query["query"].ToString();
 	var pageIndex = String.IsNullOrEmpty(query) ? 1 : Convert.ToInt32(query);
 }
-<div class="page-single">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-9 col-sm-12 col-xs-12">
-				
-				@await Component.InvokeAsync("TvShows", new { pageIndex = pageIndex, pageSize = pageSize });
-				
-			</div>
-			
-			<div class="col-md-3 col-sm-12 col-xs-12">
-				<div class="sidebar">
-					@await Html.PartialAsync("layout/SideBar")
-				</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 col-sm-12 col-xs-12">
+
+			@await Component.InvokeAsync("TvShows", new { pageIndex = pageIndex, pageSize = pageSize });
+
+		</div>
+
+		<div class="col-md-3 col-sm-12 col-xs-12">
+			<div class="sidebar">
+				@await Html.PartialAsync("layout/SideBar")
 			</div>
 		</div>
 	</div>

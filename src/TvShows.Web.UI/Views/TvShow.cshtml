@@ -7,56 +7,54 @@
 	var isLoggedIn = Context.User?.Identity.IsAuthenticated ?? false;
 }
 <!-- blog detail section-->
-<div class="page-single">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-9 col-sm-12 col-xs-12">
-				<div class="blog-detail-ct">
-					<h1>@Model.ShowTitle</h1>
-					<span class="time">@Model.Premiered</span>
-					<div>
-						<img style="width:250px" src="@Model.PreImage?.LocalCrops?.Src" alt="">
-						<p>@Html.Raw(@Model.Summary)</p>
-					</div>
-					
-					<!-- share link -->
-					<div class="flex-it share-tag">
-						<div class="social-link">
-							<h4>Share it</h4>
-							<a href="#"><i class="ion-social-facebook"></i></a>
-							<a href="#"><i class="ion-social-twitter"></i></a>
-							<a href="#"><i class="ion-social-googleplus"></i></a>
-							<a href="#"><i class="ion-social-pinterest"></i></a>
-							<a href="#"><i class="ion-social-linkedin"></i></a>
-						</div>
-						<div class="right-it">
-							<h4>Tags</h4>
-							<a href="#">Gray,</a>
-							<a href="#">Film,</a>
-							<a href="#">Poster</a>
-						</div>
-					</div>
-					<!-- comment items -->
-					<div class="comments">
-						@await Component.InvokeAsync("Comments", new {model = Model})
-					</div>
-					<div class="comment-form">
-						@if (isLoggedIn)
-						{
-							@await Component.InvokeAsync("TvShowReview")
-						}
-						else
-						{
-							<a href="/login"><h4>Login to comment</h4></a>
-						}
-					</div>
-					<!-- comment form -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 col-sm-12 col-xs-12">
+			<div class="blog-detail-ct">
+				<h1>@Model.ShowTitle</h1>
+				<span class="time">@Model.Premiered</span>
+				<div>
+					<img style="width:250px" src="@Model.PreImage?.LocalCrops?.Src" alt="">
+					<p>@Html.Raw(@Model.Summary)</p>
 				</div>
+
+				<!-- share link -->
+				<div class="flex-it share-tag">
+					<div class="social-link">
+						<h4>Share it</h4>
+						<a href="#"><i class="ion-social-facebook"></i></a>
+						<a href="#"><i class="ion-social-twitter"></i></a>
+						<a href="#"><i class="ion-social-googleplus"></i></a>
+						<a href="#"><i class="ion-social-pinterest"></i></a>
+						<a href="#"><i class="ion-social-linkedin"></i></a>
+					</div>
+					<div class="right-it">
+						<h4>Tags</h4>
+						<a href="#">Gray,</a>
+						<a href="#">Film,</a>
+						<a href="#">Poster</a>
+					</div>
+				</div>
+				<!-- comment items -->
+				<div class="comments">
+					@await Component.InvokeAsync("Comments", new { model = Model })
+				</div>
+				<div class="comment-form">
+					@if (isLoggedIn)
+					{
+						@await Component.InvokeAsync("TvShowReview")
+					}
+					else
+					{
+						<a href="/login"><h4>Login to comment</h4></a>
+					}
+				</div>
+				<!-- comment form -->
 			</div>
-			<div class="col-md-3 col-sm-12 col-xs-12">
-				<div class="sidebar">
-					@await Html.PartialAsync("layout/SideBar")
-				</div>
+		</div>
+		<div class="col-md-3 col-sm-12 col-xs-12">
+			<div class="sidebar">
+				@await Html.PartialAsync("layout/SideBar")
 			</div>
 		</div>
 	</div>
