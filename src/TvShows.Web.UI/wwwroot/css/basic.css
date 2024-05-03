@@ -1290,7 +1290,7 @@ legend {
     margin-bottom: 20px;
     font-size: 21px;
     line-height: inherit;
-    color: #333333;
+    /*color: #333333;*/
     border: 0;
     border-bottom: 1px solid #e5e5e5;
 }
@@ -10013,4 +10013,29 @@ footer.full-width-ft .ft-copyright {
 }
 .is-danger {
     color: #df2f2f
+}
+.umbraco-forms-page h4{
+    text-align:center
+}
+.umbraco-forms-field {
+    max-width: 300px;
+    margin: auto;
+}
+.umbraco-forms-form legend{
+    text-align: center
+}
+.umbraco-forms-navigation input {
+    display: block;
+    margin: auto;
+    background-color: #dd003f;
+    border-radius: 15px;
+    border-radius: 20px;
+    padding: 11px 25px;
+    border: none;
+}
+.umbraco-forms-form input.text, .umbraco-forms-form textarea{
+    width: 100% !important;
+}
+.umbraco-forms-field{
+    margin-bottom: 18px;
 }
