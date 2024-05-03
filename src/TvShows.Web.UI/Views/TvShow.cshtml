@@ -5,6 +5,7 @@
 @{
 	Layout = "_Layout.cshtml";
 	var isLoggedIn = Context.User?.Identity.IsAuthenticated ?? false;
+	var parent = Model.Parent as TvShowsLibrary;
 }
 <!-- blog detail section-->
 <div class="container">
@@ -46,7 +47,7 @@
 					}
 					else
 					{
-						<a href="/login"><h4>Login to comment</h4></a>
+						<a href="/login">@parent?.LoginSuggest</a>
 					}
 				</div>
 				<!-- comment form -->

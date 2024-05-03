@@ -16,10 +16,38 @@
     ]
   },
   "CompositionContentTypes": [],
-  "PropertyGroups": [],
+  "PropertyGroups": [
+    {
+      "Key": "f33dc00e-6323-4468-bbae-67db046132f5",
+      "Name": "Content",
+      "Type": 1,
+      "Alias": "content",
+      "PropertyTypes": [
+        {
+          "Key": "0654a987-6a40-4873-a60e-f42307125034",
+          "Alias": "loginSuggest",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "LoginSuggest",
+          "SortOrder": 1,
+          "VariesByCulture": true
+        },
+        {
+          "Key": "0f7d9c87-6f5a-45bf-84a9-1a45c3896935",
+          "Alias": "totalTitle",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "TotalTitle",
+          "VariesByCulture": true
+        }
+      ]
+    }
+  ],
   "PropertyTypes": [],
   "Udi": "umb://document-type/36fd2a782e644f0b8a6fae3f5397185c",
   "Dependencies": [
+    {
+      "Udi": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+      "Ordering": true
+    },
     {
       "Udi": "umb://document-type/b3d700dce1d04611a279d79e93172878"
     },
