@@ -124,6 +124,14 @@
           "VariesByCulture": true
         },
         {
+          "Key": "bf99ef9f-b336-4c34-ac0c-ac5cbec470d6",
+          "Alias": "backToTop",
+          "DataType": "umb://data-type/0cc0eba1996042c9bf9b60e150b429ae",
+          "Name": "BackToTop",
+          "SortOrder": 9,
+          "VariesByCulture": true
+        },
+        {
           "Key": "d70880e5-5bdd-453e-96ac-66434b129a42",
           "Alias": "accountFooter",
           "DataType": "umb://data-type/ca90c9500aff4e72b976a30b1ac57dad",
