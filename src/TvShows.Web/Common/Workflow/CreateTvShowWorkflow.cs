@@ -31,34 +31,30 @@ namespace TvShows.Web.Common.Workflow
 			var tvShowModel = new ShowModel();
 			tvShowModel.CreatedByForm = true;
 			tvShowModel.TvShowGuidId = context.Record.UniqueId;
-			if(context.Record.State == FormState.Submitted)
+			// we can then iterate through the fields
+			foreach (RecordField rf in context.Record.RecordFields.Values)
 			{
-				// we can then iterate through the fields
-				foreach (RecordField rf in context.Record.RecordFields.Values)
+				// and we can then do something with the collection of values on each field
+				object val = rf.Values[0];
+
+				switch (rf.Alias)
 				{
-					// and we can then do something with the collection of values on each field
-					object val = rf.Values[0];
+					case "name":
+						tvShowModel.ShowTitle = val.ToString();
+						break;
+					case "description":
+						tvShowModel.Summary = val.ToString();
+						break;
+					case "premiered":
+						tvShowModel.Premiered = (DateTime)val;
+						break;
+					case "preImage":
+						tvShowModel.PreImage = val.ToString();
+						break;
 
-					switch (rf.Alias)
-					{
-						case "name":
-							tvShowModel.ShowTitle = val.ToString();
-							break;
-						case "description":
-							tvShowModel.Summary = val.ToString();
-							break;
-						case "premiered":
-							tvShowModel.Premiered = (DateTime)val;
-							break;
-						case "preImage":
-							tvShowModel.PreImage = val.ToString();
-							break;
-
-					}
 				}
-				_tvShowService.SaveTvShow(tvShowModel, currentCulture);
-
 			}
+			_tvShowService.SaveTvShow(tvShowModel, currentCulture);
 
 			return await Task.FromResult(WorkflowExecutionStatus.Completed);
 		}
