@@ -35,23 +35,26 @@ namespace TvShows.Web.Common.Workflow
 			foreach (RecordField rf in context.Record.RecordFields.Values)
 			{
 				// and we can then do something with the collection of values on each field
-				object val = rf.Values[0];
-
-				switch (rf.Alias)
+				if (rf.Values.Any())
 				{
-					case "name":
-						tvShowModel.ShowTitle = val.ToString();
-						break;
-					case "description":
-						tvShowModel.Summary = val.ToString();
-						break;
-					case "premiered":
-						tvShowModel.Premiered = (DateTime)val;
-						break;
-					case "preImage":
-						tvShowModel.PreImage = val.ToString();
-						break;
+					object val = rf.Values[0];
 
+					switch (rf.Alias)
+					{
+						case "name":
+							tvShowModel.ShowTitle = val.ToString();
+							break;
+						case "description":
+							tvShowModel.Summary = val.ToString();
+							break;
+						case "premiered":
+							tvShowModel.Premiered = (DateTime)val;
+							break;
+						case "preImage":
+							tvShowModel.PreImage = val.ToString();
+							break;
+
+					}
 				}
 			}
 			_tvShowService.SaveTvShow(tvShowModel, currentCulture);
