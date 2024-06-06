@@ -67,7 +67,7 @@ builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<Appsettings>>
 
 WebApplication app = builder.Build();
 
-// Making a change so that it deploys 1
+// Making a change so that it deploys
 await app.BootUmbracoAsync();
 
 app.UseHttpsRedirection();
