@@ -15,7 +15,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
-    <PackageReference Include="Umbraco.Cms" Version="13.3.0" />
+    <PackageReference Include="Umbraco.Cms" Version="13.3.2" />
     <PackageReference Include="Umbraco.Forms" Version="13.1.2" />
     <PackageReference Include="Umbraco.Forms.Deploy" Version="13.0.1" />
     <PackageReference Include="Umbraco.Forms.StaticAssets" Version="13.1.2" />
